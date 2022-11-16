@@ -1,0 +1,664 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--==================================== Background ====================================-->
+
+	<WeaponClassDef>
+		<defName>RebelGuns</defName>
+		<label>rebel guns</label>
+	</WeaponClassDef>
+
+
+
+
+
+
+
+
+	<ThingDef Abstract="True" Name="BaseWeaponR">
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<drawerType>MapMeshOnly</drawerType>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>true</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<equipmentType>Primary</equipmentType>
+		<useHitPoints>true</useHitPoints>
+		<pathCost>14</pathCost>
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<Beauty>-3</Beauty>
+			<SellPriceFactor>0.20</SellPriceFactor>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li>
+				<compClass>CompEquippable</compClass>
+			</li>
+			<li Class="CompProperties_Styleable"></li>
+		</comps>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+		</graphicData>
+		<allowedArchonexusCount>1</allowedArchonexusCount>
+	</ThingDef>
+
+	<ThingDef Name="BaseGunR" Abstract="True" ParentName="BaseWeaponR">
+		<techLevel>Industrial</techLevel>
+		<smeltable>true</smeltable>
+		<relicChance>1</relicChance>
+		<thingCategories>
+			<li>WeaponsRanged</li>
+		</thingCategories>
+		<weaponClasses>
+			<li>Ranged</li>
+		</weaponClasses>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+		<statBases>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtWeaponGun</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef Name="BaseGunWithQualityR" Abstract="True" ParentName="BaseGunR">
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef Name="BaseMakeableGunR" ParentName="BaseGunWithQualityR" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+			<researchPrerequisite>Gunsmithing</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+	<ThingDef Name="BaseHumanMakeableGunR" ParentName="BaseMakeableGunR" Abstract="True">
+		<weaponTags>
+			<li>Gun</li>
+		</weaponTags>
+		<comps>
+			<li Class="CompProperties_Biocodable"/>
+		</comps>
+	</ThingDef>
+
+	<ThingDef Name="BaseBulletR" Abstract="True">
+		<category>Projectile</category>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<thingClass>Bullet</thingClass>
+		<label>bullet</label>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<graphicData>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+	</ThingDef>
+
+	<!-- Guns -->
+
+	<ThingDef ParentName="BaseHumanMakeableGunR">
+		<defName>Gun_Antiarmour</defName>
+		<label>Anti-armour rifle</label>
+		<description>A bolt action sniper rifle, optimised for imperial armour. Shorter cooldown and much higher armour penetration at the cost of range and raw damage.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/AntiarmourRifle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<weaponClasses>
+			<li>LongShots</li>
+			<li>RangedHeavy</li>
+			<li>RebelGuns</li>
+		</weaponClasses>
+		<recipeMaker>
+			<researchPrerequisite>RebelCrafting</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+		</recipeMaker>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<Mass>4</Mass>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.84</AccuracyMedium>
+			<AccuracyLong>0.88</AccuracyLong>
+			<RangedWeapon_Cooldown>1.9</RangedWeapon_Cooldown>
+			<RoyalFavorValue>1</RoyalFavorValue>
+		</statBases>
+		<costList>
+			<Steel>60</Steel>
+			<Uranium>40</Uranium>
+			<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_AntiArmourRifle</defaultProjectile>
+				<warmupTime>1.9</warmupTime>
+				<range>37.9</range>
+				<soundCast>Shot_TurretSniper</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+		<weaponTags Inherit="False">
+			<li>AntiArmourRifle</li>
+			<li>RebelGuns</li>
+		</weaponTags>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBulletR">
+		<defName>Bullet_AntiArmourRifle</defName>
+		<label>Anti-armour rifle bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<armorPenetrationBase>0.8</armorPenetrationBase>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<stoppingPower>1.8</stoppingPower>
+			<speed>120</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanMakeableGunR">
+		<defName>Gun_AntiarmourKnife</defName>
+		<label>Anti-armour rifle with bayonet</label>
+		<description>A bolt action sniper rifle, optimised for imperial armour. Shorter cooldown and much higher armour penetration at the cost of range and raw damage. A slipknife has been attached as a melee weapon.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/AntiarmourRifleWithKnife</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<weaponClasses>
+			<li>LongShots</li>
+			<li>RangedHeavy</li>
+			<li>RebelGuns</li>
+		</weaponClasses>
+		<recipeMaker>
+			<researchPrerequisite>RebelCrafting</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+		</recipeMaker>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<Mass>4</Mass>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.84</AccuracyMedium>
+			<AccuracyLong>0.88</AccuracyLong>
+			<RangedWeapon_Cooldown>1.9</RangedWeapon_Cooldown>
+			<RoyalFavorValue>2</RoyalFavorValue>
+		</statBases>
+		<costList>
+			<Gun_Antiarmour>1</Gun_Antiarmour>
+			<Slipknife>1</Slipknife>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_AntiArmourRifle</defaultProjectile>
+				<warmupTime>1.9</warmupTime>
+				<range>37.9</range>
+				<soundCast>Shot_SniperRifle</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>11</power>
+				<cooldownTime>1.7</cooldownTime>
+				<armorPenetration>0.9</armorPenetration>
+			</li>
+
+		</tools>
+		<weaponTags Inherit="False">
+			<li>AntiArmourRifle</li>
+			<li>RebelGuns</li>
+		</weaponTags>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseGunR">
+		<defName>Monolauncher</defName>
+		<label>Monorocket launcher</label>
+		<description>A single-use rocket launcher that fires a single large-bore explosive rocket. Good against small groups of tough targets. Built by the rebel alliance to sabotage the Empire, and optimised for range.</description>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Monolauncher</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<smeltable>false</smeltable>
+		<statBases>
+			<MarketValue>600</MarketValue>
+			<Mass>7</Mass>
+			<RangedWeapon_Cooldown>0.2</RangedWeapon_Cooldown>
+			<RoyalFavorValue>0.5</RoyalFavorValue>
+		</statBases>
+		<techLevel>Spacer</techLevel>
+		<weaponTags>
+			<li>GunSingleUse</li>
+		</weaponTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
+		<tradeTags>
+			<li>ExoticMisc</li>
+		</tradeTags>
+		<thingSetMakerTags>
+			<li>SingleUseWeapon</li>
+			<li>RewardStandardLowFreq</li>
+		</thingSetMakerTags>
+		<relicChance>0</relicChance>
+		<verbs>
+			<li>
+				<verbClass>Verb_ShootOneUse</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Bullet_RocketR</defaultProjectile>
+				<forcedMissRadius>0.1</forcedMissRadius>
+				<warmupTime>2.8</warmupTime>
+				<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+				<range>50.9</range>
+				<ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>InfernoCannon_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<onlyManualCast>true</onlyManualCast>
+				<stopBurstWithoutLos>false</stopBurstWithoutLos>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>11.7</power>
+				<cooldownTime>2.6</cooldownTime>
+			</li>
+		</tools>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<requiredDamageTypeToExplode>Flame</requiredDamageTypeToExplode>
+			</li>
+			<li Class="CompProperties_Biocodable"/>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBulletR">
+		<defName>Bullet_RocketR</defName>
+		<label>rocket</label>
+		<graphicData>
+			<texPath>Things/Projectile/Rocket_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<explosionRadius>7.9</explosionRadius>
+			<speed>40</speed>
+		</projectile>
+	</ThingDef>
+
+	<!-- Melee -->
+
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>Slipknife</defName>
+		<label>slipknife</label>
+		<description>A brutally sharp knife salvaged from an imperial monosword by rebel forces. Each monosword yields three slipknives, which maintain the mono-molecular edge of the sword. These knives can cut through imperial armour with ease, though cause significantly less damage due to their short length.</description>
+		<statBases>
+			<WorkToMake>5800</WorkToMake>
+			<MarketValue>1300</MarketValue>
+			<Mass>1</Mass>
+			<RoyalFavorValue>1</RoyalFavorValue>
+		</statBases>
+		<weaponTags Inherit="False">
+			<li>Slipknife</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Items/Weapons/Slipknife</texPath>
+			<!--  <color>(255,50,50)</color> -->
+		</graphicData>
+		<soundInteract>Interact_BladelinkMonoSword</soundInteract>
+		<meleeHitSound>MeleeHit_BladelinkMonoSword</meleeHitSound>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>MeleePiercer</li>
+		</weaponClasses>
+
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>TableMachining</li>
+				<li>FueledSmithy</li>
+				<li>ElectricSmithy</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedRebell</unfinishedThingDef>
+			<researchPrerequisite>RebelCrafting</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<SpacerSwordShard>1</SpacerSwordShard>
+			<Plasteel>5</Plasteel>
+		</costList>
+
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>10</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1.4</cooldownTime>
+				<armorPenetration>0.85</armorPenetration>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1.4</cooldownTime>
+				<armorPenetration>0.85</armorPenetration>
+			</li>
+		</tools>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BaseWeapon_Bladelink">
+		<defName>PersonaSlipknife</defName>
+		<label>persona slipknife</label>
+		<description>A brutally sharp knife salvaged from an imperial monosword by rebel forces. Each monosword yields three slipknives, which maintain the mono-molecular edge of the sword. These knives can cut through imperial armour with ease, though cause significantly less damage due to their short length.\nThis weapon has an onboard persona that can bond to only a single person. The wielder and intelligent weapon can synchronize their reflexes and attack with frightening speed, accuracy, and creativity. Once bonded to a wielder, the weapon's persona will refuse to be wielded by anyone else.</description>
+		<statBases>
+			<WorkToMake>7800</WorkToMake>
+			<MarketValue>3000</MarketValue>
+			<Mass>1</Mass>
+		</statBases>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Items/Weapons/Slipknife</texPath>
+			<!--  <color>(255,50,50)</color> -->
+		</graphicData>
+		<soundInteract>Interact_BladelinkMonoSword</soundInteract>
+		<meleeHitSound>MeleeHit_BladelinkMonoSword</meleeHitSound>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>MeleePiercer</li>
+		</weaponClasses>
+
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>TableMachining</li>
+				<li>FueledSmithy</li>
+				<li>ElectricSmithy</li>
+			</recipeUsers>
+			<unfinishedThingDef>UnfinishedRebell</unfinishedThingDef>
+			<researchPrerequisite>RebelCrafting</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>9</Crafting>
+				<Intellectual>4</Intellectual>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<SpacerSwordShard>1</SpacerSwordShard>
+			<Plasteel>5</Plasteel>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>10</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1.4</cooldownTime>
+				<armorPenetration>0.85</armorPenetration>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1.4</cooldownTime>
+				<armorPenetration>0.85</armorPenetration>
+			</li>
+		</tools>
+	</ThingDef>
+
+
+
+	<ThingDef Name="UnfinishedRebel" Abstract="True">
+		<thingClass>UnfinishedThing</thingClass>
+		<category>Item</category>
+		<label>unfinished slipknife</label>
+		<graphicData>
+			<texPath>Things/Item/Unfinished/UnfinishedWeapon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<altitudeLayer>Item</altitudeLayer>
+		<useHitPoints>true</useHitPoints>
+		<isUnfinishedThing>true</isUnfinishedThing>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<selectable>true</selectable>
+		<tradeability>None</tradeability>
+		<drawerType>MapMeshOnly</drawerType>
+		<!-- For CompForbiddable -->
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<DeteriorationRate>2.0</DeteriorationRate>
+			<Beauty>-8</Beauty>
+			<Mass>1</Mass>
+			<!-- ingredients are added to this value -->
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Styleable"/>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<rotatable>false</rotatable>
+		<pathCost>14</pathCost>
+		<thingCategories>
+			<li>Unfinished</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="UnfinishedRebel">
+		<defName>UnfinishedRebell</defName>
+		<label>unfinished weapon</label>
+		<description>An unfinished weapon.</description>
+		<graphicData>
+			<texPath>Things/Item/Unfinished/UnfinishedWeapon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+
+	</ThingDef>
+
+
+
+	<!-- Components -->
+
+	<RecipeDef>
+		<defName>SalvageImperialSwords</defName>
+		<label>salvage ultratech swords</label>
+		<description>Break down monoswords and plasmaswords into components for crafting rebel anti-armour weaponry and an imperial insignia.</description>
+		<jobString>Salvaging.</jobString>
+		<workAmount>5250</workAmount>
+		<workSkill>Crafting</workSkill>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<uiIconThing>MeleeWeapon_MonoSword</uiIconThing>
+		<recipeUsers>
+			<li>TableMachining</li>
+		</recipeUsers>
+		<researchPrerequisite>AdvancedFabrication</researchPrerequisite>
+		<skillRequirements>
+			<Crafting>6</Crafting>
+		</skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MeleeWeapon_MonoSword</li>
+						<li>MeleeWeapon_PlasmaSword</li>
+						<li>MeleeWeapon_MonoSwordBladelink</li>
+						<li>MeleeWeapon_PlasmaSwordBladelink</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MeleeWeapon_MonoSword</li>
+				<li>MeleeWeapon_PlasmaSword</li>
+				<li>MeleeWeapon_MonoSwordBladelink</li>
+				<li>MeleeWeapon_PlasmaSwordBladelink</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<thingDefs>
+				<li>MeleeWeapon_MonoSword</li>
+				<li>MeleeWeapon_PlasmaSword</li>
+				<li>MeleeWeapon_MonoSwordBladelink</li>
+				<li>MeleeWeapon_PlasmaSwordBladelink</li>
+			</thingDefs>
+		</defaultIngredientFilter>
+
+		<products>
+			<SpacerSwordShard>3</SpacerSwordShard>
+			<ImperialInsignia>1</ImperialInsignia>
+		</products>
+	</RecipeDef>
+
+
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>SpacerSwordShard</defName>
+		<label>sword shard</label>
+		<description>A salvaged shard from an imperial sword.</description>
+		<graphicData>
+			<texPath>Things/Items/SpacerShard/SpacerShard</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>50</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<statBases>
+			<MaxHitPoints>90</MaxHitPoints>
+			<MarketValue>500</MarketValue>
+			<Mass>0.6</Mass>
+			<Flammability>0.1</Flammability>
+			<DeteriorationRate>1.0</DeteriorationRate>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<allowedArchonexusCount>10</allowedArchonexusCount>
+	</ThingDef>
+
+
+
+</Defs>
+

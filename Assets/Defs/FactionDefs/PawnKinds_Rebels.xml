@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--
+Rebel_Common_Lodger
+Rebel_Common_Laborer
+Rebel_Common_Trader
+
+Rebel_Fighter_Trooper - dog
+Rebel_Fighter_Janissary - wolf
+Rebel_Fighter_Champion - panther
+Rebel_Fighter_Cataphract - bear
+Rebel_Fighter_Sniper - hawk
+-->
+
+
+
+
+
+	<!--===================== Rebel civilians =========================-->
+
+
+	<PawnKindDef Name="Rebel_Base" Abstract="True">
+		<race>Human</race>
+		<defaultFactionType>Rebels</defaultFactionType>
+		<chemicalAddictionChance>0.2</chemicalAddictionChance>
+		<backstoryCryptosleepCommonality>0.05</backstoryCryptosleepCommonality>
+		<invNutrition>1.34</invNutrition>
+		<apparelTags>
+			<li>IndustrialBasic</li>
+			<li>Neolithic</li>
+			<li>IndustrialAdvanced</li>
+			<li>Western</li>
+		</apparelTags>
+		<disallowedTraits>
+			<li>Cannibal</li>
+			<li>Greedy</li>
+			<li>Jealous</li>
+			<li>Gourmand</li>
+		</disallowedTraits>
+
+		<specificApparelRequirements>
+			<li>
+				<colorGenerator Class="ColorGenerator_Options">
+					<options>
+						<li>
+							<only>(160, 0, 0)</only>
+							<!-- red -->
+						</li>
+						<li>
+							<only>(150, 50, 70)</only>
+							<!-- light brown -->
+						</li>
+						<li>
+							<only>(150, 80, 0)</only>
+							<!-- mid brown -->
+						</li>
+						<li>
+							<only>(100, 30, 30)</only>
+							<!-- dark brown -->
+						</li>
+					</options>
+				</colorGenerator>
+			</li>
+		</specificApparelRequirements>
+
+		<initialWillRange>8~10</initialWillRange>
+		<initialResistanceRange>8~13</initialResistanceRange>
+	</PawnKindDef>
+
+
+	<PawnKindDef ParentName="Rebel_Base">
+		<defName>Rebel_Commoner</defName>
+		<label>rebel dog</label>
+		<defaultFactionType>Rebels</defaultFactionType>
+		<minTitleRequired>Comrade_Zero</minTitleRequired>
+		<itemQuality>Poor</itemQuality>
+		<isFighter>false</isFighter>
+
+		<weaponTags>
+			<li>Gun</li>
+			<li>MedievalMeleeBasic</li>
+		</weaponTags>
+		<weaponMoney>65~250</weaponMoney>
+		<combatPower>45</combatPower>
+
+		<backstoryCryptosleepCommonality>0.008</backstoryCryptosleepCommonality>
+
+		<techHediffsMoney>50~400</techHediffsMoney>
+		<techHediffsTags>
+			<li>Poor</li>
+			<li>Simple</li>
+		</techHediffsTags>
+		<techHediffsChance>0.2</techHediffsChance>
+
+
+		<gearHealthRange>0.2~2.0</gearHealthRange>
+		<forceNormalGearQuality>true</forceNormalGearQuality>
+		<apparelMoney>100~800</apparelMoney>
+
+	</PawnKindDef>
+
+	<PawnKindDef  ParentName="Rebel_Base">
+		<defName>Rebel_Trader</defName>
+		<label>rebel trader</label>
+		<defaultFactionType>Rebels</defaultFactionType>
+		<minTitleRequired>Comrade_Zero</minTitleRequired>
+		<maxGenerationAge>65</maxGenerationAge>
+		<trader>true</trader>
+		<itemQuality>Poor</itemQuality>
+		<isFighter>false</isFighter>
+		<gearHealthRange>0.2~2.0</gearHealthRange>
+		<weaponTags>
+			<li>Gun</li>
+			<li>MedievalMeleeBasic</li>
+		</weaponTags>
+		<weaponMoney>65~350</weaponMoney>
+		<apparelMoney>200~600</apparelMoney>
+		<combatPower>55</combatPower>
+		<backstoryCryptosleepCommonality>0.008</backstoryCryptosleepCommonality>
+		<forceNormalGearQuality>true</forceNormalGearQuality>
+		<techHediffsMoney>50~400</techHediffsMoney>
+		<techHediffsTags>
+			<li>Poor</li>
+			<li>Simple</li>
+		</techHediffsTags>
+		<techHediffsChance>0.08</techHediffsChance>
+		<inventoryOptions>
+			<skipChance>0.70</skipChance>
+			<subOptionsTakeAll>
+				<li>
+					<thingDef>Silver</thingDef>
+					<countRange>30~100</countRange>
+				</li>
+			</subOptionsTakeAll>
+		</inventoryOptions>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="Rebel_Base">
+		<defName>Rebel_Laborer</defName>
+		<label>rebel laborer</label>
+		<defaultFactionType>Rebels</defaultFactionType>
+		<maxGenerationAge>50</maxGenerationAge>
+		<combatPower>20</combatPower>
+		<backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
+		<forceNormalGearQuality>true</forceNormalGearQuality>
+		<isFighter>false</isFighter>
+		<requiredWorkTags>
+			<!-- Must be capable of labor, as this pawn kind is used in laborer quests. -->
+			<li>ManualDumb</li>
+			<li>ManualSkilled</li>
+			<li>Cleaning</li>
+			<li>Hauling</li>
+			<li>Mining</li>
+			<li>Firefighting</li>
+		</requiredWorkTags>
+		<apparelTags>
+			<li>IndustrialBasic</li>
+		</apparelTags>
+		<apparelMoney>200~800</apparelMoney>
+		<gearHealthRange>1~1</gearHealthRange>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<techHediffsMoney>50~800</techHediffsMoney>
+		<techHediffsTags>
+			<li>Poor</li>
+			<li>Simple</li>
+		</techHediffsTags>
+		<techHediffsChance>0.08</techHediffsChance>
+	</PawnKindDef>
+
+
+	<!--===================== Rebel fighters =========================-->
+
+
+	<PawnKindDef Name="Rebel_Combat_Base" Abstract="True">
+		<race>Human</race>
+		<defaultFactionType>Rebels</defaultFactionType>
+
+		<backstoryCryptosleepCommonality>0.05</backstoryCryptosleepCommonality>
+		<invNutrition>1.64</invNutrition>
+		<apparelTags>
+			<li>Western</li>
+			<li>IndustrialMilitaryBasic</li>
+			<li>IndustrialMilitaryAdvanced </li>
+			<li>MedievalMilitary</li>
+		</apparelTags>
+
+		<disallowedTraits>
+			<li>Cannibal</li>
+			<li>Greedy</li>
+			<li>Jealous</li>
+			<li>Gourmand</li>
+			<li>BodyPurist</li>
+			<li>Wimp</li>
+		</disallowedTraits>
+
+		<chemicalAddictionChance>0.3</chemicalAddictionChance>
+		<combatEnhancingDrugsChance>0.6</combatEnhancingDrugsChance>
+		<combatEnhancingDrugsCount>0~2</combatEnhancingDrugsCount>
+
+		<specificApparelRequirements>
+			<li>
+				<colorGenerator Class="ColorGenerator_Options">
+					<options>
+						<li>
+							<only>(160, 0, 0)</only>
+							<!-- red -->
+						</li>
+						<li>
+							<only>(150, 50, 70)</only>
+							<!-- light brown -->
+						</li>
+						<li>
+							<only>(150, 80, 0)</only>
+							<!-- mid brown -->
+						</li>
+						<li>
+							<only>(100, 30, 30)</only>
+							<!-- dark brown -->
+						</li>
+					</options>
+				</colorGenerator>
+			</li>
+		</specificApparelRequirements>
+
+		<techHediffsRequired>
+			<li>DeathAcidifier</li>
+		</techHediffsRequired>
+		<biocodeWeaponChance>0.7</biocodeWeaponChance>
+
+		<initialWillRange>8~14</initialWillRange>
+		<initialResistanceRange>8~23</initialResistanceRange>
+
+	</PawnKindDef>
+
+
+	<!-- Melee -->
+
+	<PawnKindDef ParentName="Rebel_Combat_Base">
+		<defName>Rebel_Wolf</defName>
+		<label>rebel wolf</label>
+
+		<combatPower>75</combatPower>
+
+		<weaponMoney>1050~3200</weaponMoney>
+		<weaponTags>
+			<li>MedievalMeleeAdvanced</li>
+		</weaponTags>
+
+		<apparelMoney>600~1400</apparelMoney>
+
+		<!--   <apparelRequired>
+      <li>Apparel_Duster</li>
+    </apparelRequired>
+	
+	<specificApparelRequirements Inherit="False">
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>Shell</apparelLayer>
+        <stuff>Leather_Wolf</stuff>
+      </li>
+    </specificApparelRequirements> -->
+
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>5~12</range>
+			</li>
+		</skills>
+
+
+	</PawnKindDef>
+
+
+
+	<PawnKindDef ParentName="Rebel_Combat_Base">
+		<defName>Rebel_Bear</defName>
+		<label>rebel bear</label>
+
+		<royalTitleChance>0.1</royalTitleChance>
+		<titleSelectOne>
+			<li>Comrade_Zero</li>
+			<li>Comrade_One</li>
+		</titleSelectOne>
+
+		<combatPower>95</combatPower>
+
+		<weaponMoney>2450~5200</weaponMoney>
+		<weaponTags>
+			<li>MedievalMeleeAdvanced</li>
+			<li>Slipknife</li>
+		</weaponTags>
+
+		<apparelMoney>800~3400</apparelMoney>
+
+		<!--	<specificApparelRequirements Inherit="False">
+      <li>
+        <bodyPartGroup>Torso</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <stuff>Leather_Bear</stuff>
+      </li>
+	        <li>
+        <bodyPartGroup>Legs</bodyPartGroup>
+        <apparelLayer>OnSkin</apparelLayer>
+        <stuff>Leather_Bear</stuff>
+      </li>
+    </specificApparelRequirements> -->
+
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>7~14</range>
+			</li>
+		</skills>
+
+		<apparelRequired>
+			<li>Apparel_PlateArmor</li>
+		</apparelRequired>
+		<techHediffsRequired>
+			<li>ArmorskinGland</li>
+		</techHediffsRequired>
+	</PawnKindDef>
+
+	<!-- Ranged -->
+
+	<PawnKindDef ParentName="Rebel_Combat_Base">
+		<defName>Rebel_Hawk</defName>
+		<label>rebel hawk</label>
+
+		<combatPower>75</combatPower>
+		<weaponMoney>1550~3500</weaponMoney>
+		<maxGenerationAge>40</maxGenerationAge>
+		<apparelMoney>1000~3000</apparelMoney>
+		<techHediffsMoney>0~2000</techHediffsMoney>
+		<techHediffsMaxAmount>1</techHediffsMaxAmount>
+		<allowRoyalRoomRequirements>False</allowRoyalRoomRequirements>
+		<weaponTags>
+			<li>GunHeavy</li>
+			<li>IndustrialGunAdvanced</li>
+			<li>RebelGuns</li>
+		</weaponTags>
+
+		<specificApparelRequirements Inherit="False">
+			<li>
+				<bodyPartGroup>UpperHead</bodyPartGroup>
+				<alternateTagChoices>
+					<li>
+						<tag>Gunlink</tag>
+						<chance>0.3</chance>
+					</li>
+				</alternateTagChoices>
+			</li>
+		</specificApparelRequirements>
+
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>8~16</range>
+			</li>
+		</skills>
+		<disallowedTraits>
+			<li>Wimp</li>
+			<li>Brawler</li>
+		</disallowedTraits>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="Rebel_Combat_Base">
+		<defName>Rebel_Vulture</defName>
+		<label>rebel vulture</label>
+		<royalTitleChance>0.1</royalTitleChance>
+		<titleSelectOne>
+			<li>Comrade_Zero</li>
+			<li>Comrade_One</li>
+		</titleSelectOne>
+		<combatPower>95</combatPower>
+		<weaponMoney>2150~4500</weaponMoney>
+		<maxGenerationAge>40</maxGenerationAge>
+		<apparelMoney>3000~4000</apparelMoney>
+		<weaponTags>
+			<li>RebelGuns</li>
+		</weaponTags>
+
+		<apparelRequired>
+			<li>Apparel_ArmorHelmetRecon</li>
+			<li>Apparel_ArmorRecon</li>
+		</apparelRequired>
+
+		<specificApparelRequirements Inherit="False">
+			<li>
+				<bodyPartGroup>UpperHead</bodyPartGroup>
+				<alternateTagChoices>
+					<li>
+						<tag>Gunlink</tag>
+						<chance>0.8</chance>
+					</li>
+				</alternateTagChoices>
+			</li>
+
+		</specificApparelRequirements>
+
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>10~16</range>
+			</li>
+		</skills>
+		<disallowedTraits>
+			<li>Wimp</li>
+			<li>Brawler</li>
+		</disallowedTraits>
+
+	</PawnKindDef>
+
+
+
+	<!-- Royals -->
+
+	<PawnKindDef ParentName="Rebel_Combat_Base">
+		<defName>Rebel_Warsinger</defName>
+		<label>rebel warsinger</label>
+		<factionLeader>true</factionLeader>
+		<titleRequired>Title_Rebel_Warsinger</titleRequired>
+		<combatPower>135</combatPower>
+		<apparelMoney>9999999</apparelMoney>
+
+		<techHediffsChance>1</techHediffsChance>
+		<techHediffsMoney>3000~4000</techHediffsMoney>
+		<techHediffsMaxAmount>3</techHediffsMaxAmount>
+		<initialWillRange>16~19</initialWillRange>
+		<initialResistanceRange>38~58</initialResistanceRange>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="Rebel_Combat_Base">
+		<defName>Rebel_Bestower</defName>
+		<label>bestower</label>
+		<factionHostileOnDeath>true</factionHostileOnDeath>
+		<combatPower>50</combatPower>
+		<weaponMoney>99999</weaponMoney>
+
+		<techHediffsMoney>1000~4000</techHediffsMoney>
+		<apparelColor>(250,60,60)</apparelColor>
+		<weaponTags Inherit="False">
+			<li>Slipknife</li>
+		</weaponTags>
+		<requiredWorkTags>
+			<li>Violent</li>
+		</requiredWorkTags>
+		<minGenerationAge>50</minGenerationAge>
+		<techHediffsMaxAmount>3</techHediffsMaxAmount>
+		<initialWillRange>22~28</initialWillRange>
+		<initialResistanceRange>10~26</initialResistanceRange>
+	</PawnKindDef>
+
+
+</Defs>

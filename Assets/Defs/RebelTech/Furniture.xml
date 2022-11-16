@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+	<!-- Liberation seats  -->
+
+	<ThingDef ParentName="FurnitureWithQualityBase">
+		<defName>LiberationSeat</defName>
+		<label>liberation seat</label>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<drawGUIOverlayQuality>false</drawGUIOverlayQuality>
+		<description>A modest, pelt-covered seat for leaders of the rebellion to address their comrades. Allows revolutionary-focused psycasters to sit and meditate.</description>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<altitudeLayer>Building</altitudeLayer>
+		<category>Building</category>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<hasInteractionCell>true</hasInteractionCell>
+		<statBases>
+			<MaxHitPoints>160</MaxHitPoints>
+			<WorkToBuild>8000</WorkToBuild>
+			<Mass>25</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>4</Beauty>
+			<Comfort>0.5</Comfort>
+			<MeditationFocusStrength>0.15</MeditationFocusStrength>
+		</statBases>
+		<researchPrerequisites>
+			<li>RebelFurniture</li>
+		</researchPrerequisites>
+		<thingClass>Building_Throne</thingClass>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>80</costStuffCount>
+		<costList>
+			<WoodLog>40</WoodLog>
+		</costList>
+		<pathCost>30</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<building>
+			<isSittable>true</isSittable>
+		</building>
+		<uiIconOffset>(0, 0.08)</uiIconOffset>
+		<uiIconScale>0.75</uiIconScale>
+		<comps>
+			<li Class="CompProperties_AssignableToPawn">
+				<drawAssignmentOverlay>true</drawAssignmentOverlay>
+				<compClass>CompAssignableToPawn_Throne</compClass>
+			</li>
+			<li Class="CompProperties_MeditationFocus">
+				<statDef>MeditationFocusStrength</statDef>
+				<focusTypes>
+					<li>Revolutionary</li>
+				</focusTypes>
+				<offsets>
+					<li Class="FocusStrengthOffset_ThroneSatisfiesRequirements">
+						<offset>0.08</offset>
+					</li>
+					<li Class="FocusStrengthOffset_RoomImpressiveness">
+						<curve>
+							<points>
+								<li>(0, -0.05)</li>
+								<li>(30, 0.0)</li>
+								<li>(60, 0.04)</li>
+								<li>(100,  0.08)</li>
+								<li>(170,  0.1)</li>
+							</points>
+						</curve>
+					</li>
+				</offsets>
+			</li>
+		</comps>
+		<graphicData>
+			<drawSize>(3.4,3.4)</drawSize>
+			<texPath>Things/Items/Rebelthroneroom/FurChair</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shadowData>
+				<volume>(0.5,0.35,0.4)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.2,0,2, 0.6, 0.6)</rect>
+			</damageData>
+		</graphicData>
+		<ritualFocus>
+			<spectateDistance>2</spectateDistance>
+			<allowedSpectateSides>Up</allowedSpectateSides>
+		</ritualFocus>
+		<placeWorkers>
+			<li>PlaceWorker_RitualFocus</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+	</ThingDef>
+
+	<!--Instruments -->
+
+	<SoundDef>
+		<defName>DrumOne_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>Bodhran</clipPath>
+					</li>
+				</grains>
+				<volumeRange>25</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<ThingDef ParentName="MusicalInstrumentBase">
+		<defName>DrumOne</defName>
+		<label>Timpani</label>
+		<description>A large drum that adds rhythm and percussion to music. Popular with revolutionaries.</description>
+		<size>(1,1)</size>
+		<pathCost>30</pathCost>
+		<altitudeLayer>Building</altitudeLayer>
+		<minTechLevelToBuild>Medieval</minTechLevelToBuild>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<soundPlayInstrument>DrumOne_Play</soundPlayInstrument>
+
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<MaxHitPoints>90</MaxHitPoints>
+			<WorkToMake>6000</WorkToMake>
+			<Mass>4</Mass>
+			<JoyGainFactor>1</JoyGainFactor>
+			<Beauty>6</Beauty>
+		</statBases>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>3</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>Timpani</researchPrerequisite>
+			<recipeUsers>
+				<li>CraftingSpot</li>
+				<li>FueledSmithy</li>
+				<li>ElectricSmithy</li>
+			</recipeUsers>
+
+		</recipeMaker>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>60</costStuffCount>
+		<costList>
+			<WoodLog>40</WoodLog>
+			<Steel>10</Steel>
+		</costList>
+		<building>
+			<instrumentRange>12</instrumentRange>
+		</building>
+		<uiIconOffset>(0, 0.08)</uiIconOffset>
+		<uiIconScale>0.9</uiIconScale>
+		<graphicData>
+			<texPath>Things/Items/Rebelthroneroom/drum</texPath>
+			<drawSize>(1.15,1.15)</drawSize>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<allowFlip>false</allowFlip>
+			<shadowData>
+				<volume>(0.08, 0.2, 0.08)</volume>
+				<offset>(0, 0, -0.1)</offset>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.3,0.4,0.4)</rect>
+			</damageData>
+		</graphicData>
+	</ThingDef>
+
+	<ThoughtDef>
+		<defName>ListeningToDrum</defName>
+		<workerClass>Rebels.ThoughtWorker_ListeningToDrum</workerClass>
+		<stages>
+			<li>
+				<label>listening to drums</label>
+				<description>This rhythm makes me wanna fight for what's right!</description>
+				<baseMoodEffect>3</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<SoundDef>
+		<defName>DrumTwo_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>BodhranTwo</clipPath>
+					</li>
+				</grains>
+				<volumeRange>25</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<ThingDef ParentName="MusicalInstrumentBase">
+		<defName>DrumTwo</defName>
+		<label>Wardrums</label>
+		<description>A diverse set of drums for providing rhythm and percussion to music. Popular with revolutionaries.</description>
+		<size>(2,1)</size>
+
+		<pathCost>30</pathCost>
+		<altitudeLayer>Building</altitudeLayer>
+		<minTechLevelToBuild>Medieval</minTechLevelToBuild>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<soundPlayInstrument>DrumTwo_Play</soundPlayInstrument>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToMake>13000</WorkToMake>
+			<Mass>12</Mass>
+			<JoyGainFactor>1.5</JoyGainFactor>
+			<Beauty>18</Beauty>
+		</statBases>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>Wardrums</researchPrerequisite>
+			<recipeUsers>
+				<li>CraftingSpot</li>
+				<li>FueledSmithy</li>
+				<li>ElectricSmithy</li>
+			</recipeUsers>
+		</recipeMaker>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>90</costStuffCount>
+		<costList>
+			<WoodLog>60</WoodLog>
+			<Steel>30</Steel>
+		</costList>
+		<building>
+			<instrumentRange>12</instrumentRange>
+		</building>
+		<uiIconOffset>(0, 0.08)</uiIconOffset>
+		<uiIconScale>1.1</uiIconScale>
+		<graphicData>
+			<texPath>Things/Items/Rebelthroneroom/wardrum</texPath>
+			<drawSize>(2.4,1.2)</drawSize>
+			<drawOffset>(0,0,0.1)</drawOffset>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<allowFlip>false</allowFlip>
+			<shadowData>
+				<volume>(0.08, 0.2, 0.08)</volume>
+				<offset>(0, 0, -0.1)</offset>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.3,0.4,0.4)</rect>
+			</damageData>
+		</graphicData>
+	</ThingDef>
+
+	<ThoughtDef>
+		<defName>ListeningToDrums</defName>
+		<workerClass>Rebels.ThoughtWorker_ListeningToDrums</workerClass>
+		<stages>
+			<li>
+				<label>listening to drums</label>
+				<description>These rhythms makes me wanna fight for what's right!</description>
+				<baseMoodEffect>4</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+	<!-- Combat training  -->
+
+
+	<ThingDef ParentName="FurnitureWithQualityBase">
+		<defName>MeleeDummy</defName>
+		<label>melee training dummy</label>
+		<description>A leather dummy for practicing hand-to-hand fighting. Cathartic, and trains melee skill.</description>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<graphicData>
+			<texPath>Things/Items/Rebelthroneroom/DummyStab</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2.4,2.4)</drawSize>
+			<shadowData>
+				<volume>(0.2, 0.6, 0.2)</volume>
+				<offset>(0, 0, -0.1)</offset>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.3,0.4,0.4)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<fillPercent>0.50</fillPercent>
+		<building>
+			<joyKind>TrainingCombat</joyKind>
+		</building>
+		<researchPrerequisites>
+			<li>RebelFurniture</li>
+		</researchPrerequisites>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>13000</WorkToBuild>
+			<Mass>30</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>0</Beauty>
+			<JoyGainFactor>1.2</JoyGainFactor>
+		</statBases>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>60</costStuffCount>
+		<costList>
+			<WoodLog>20</WoodLog>
+		</costList>
+		<pathCost>100</pathCost>
+		<passability>PassThroughOnly</passability>
+		<designationCategory>Joy</designationCategory>
+		<uiIconScale>0.65</uiIconScale>
+	</ThingDef>
+
+	<JoyGiverDef>
+		<defName>Train_Melee</defName>
+		<giverClass>JoyGiver_InteractBuildingInteractionCell</giverClass>
+		<baseChance>4</baseChance>
+		<thingDefs>
+			<li>MeleeDummy</li>
+		</thingDefs>
+		<jobDef>Train_Melee</jobDef>
+		<joyKind>TrainingCombat</joyKind>
+		<requiredCapacities>
+			<li>Sight</li>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</JoyGiverDef>
+
+	<JobDef>
+		<defName>Train_Melee</defName>
+		<driverClass>Rebels.JobDriver_TrainMelee</driverClass>
+		<reportString>Training melee skills against a dummy.</reportString>
+		<joyDuration>4000</joyDuration>
+		<joyMaxParticipants>1</joyMaxParticipants>
+		<joySkill>Melee</joySkill>
+		<joyXpPerTick>0.03</joyXpPerTick>
+		<joyKind>TrainingCombat</joyKind>
+		<taleOnCompletion>PlannedResistance</taleOnCompletion>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<JoyKindDef>
+		<defName>TrainingCombat</defName>
+		<label>Training combat abilities.</label>
+	</JoyKindDef>
+
+	<ThingDef ParentName="FurnitureWithQualityBase">
+		<defName>RangedDummy</defName>
+		<label>ranged training dummy</label>
+		<description>A leather dummy for practicing ranged fighting. Cathartic, and trains shooting skill.</description>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<graphicData>
+			<texPath>Things/Items/Rebelthroneroom/DummyShoot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2.4,2.4)</drawSize>
+			<shadowData>
+				<volume>(0.2, 0.6, 0.2)</volume>
+				<offset>(0, 0, -0.1)</offset>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.3,0.4,0.4)</rect>
+			</damageData>
+		</graphicData>
+		<researchPrerequisites>
+			<li>RebelFurniture</li>
+		</researchPrerequisites>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<minTechLevelToBuild>Medieval</minTechLevelToBuild>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<thingCategories>
+			<li>BuildingsJoy</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>13000</WorkToBuild>
+			<Mass>30</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>0</Beauty>
+			<JoyGainFactor>1.2</JoyGainFactor>
+		</statBases>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>60</costStuffCount>
+		<costList>
+			<WoodLog>20</WoodLog>
+		</costList>
+		<building>
+			<joyKind>TrainingCombat</joyKind>
+			<watchBuildingStandDistanceRange>4~5</watchBuildingStandDistanceRange>
+			<watchBuildingStandRectWidth>3</watchBuildingStandRectWidth>
+			<watchBuildingInSameRoom>true</watchBuildingInSameRoom>
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+		</building>
+		<pathCost>34</pathCost>
+		<placeWorkers>
+			<li>PlaceWorker_WatchArea</li>
+		</placeWorkers>
+		<designationCategory>Joy</designationCategory>
+		<uiIconScale>0.65</uiIconScale>
+	</ThingDef>
+
+	<JobDef>
+		<defName>Train_Ranged</defName>
+		<driverClass>JobDriver_PlayHoopstone</driverClass>
+		<reportString>Training ranged skills against a dummy.</reportString>
+		<joyDuration>4000</joyDuration>
+		<joyMaxParticipants>3</joyMaxParticipants>
+		<joySkill>Shooting</joySkill>
+		<joyXpPerTick>0.03</joyXpPerTick>
+		<joyKind>TrainingCombat</joyKind>
+		<taleOnCompletion>PlannedResistance</taleOnCompletion>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<JoyGiverDef>
+		<defName>Train_Ranged</defName>
+		<giverClass>JoyGiver_WatchBuilding</giverClass>
+		<baseChance>2</baseChance>
+		<thingDefs>
+			<li>RangedDummy</li>
+		</thingDefs>
+		<jobDef>Train_Ranged</jobDef>
+		<joyKind>TrainingCombat</joyKind>
+		<desireSit>false</desireSit>
+		<requiredCapacities>
+			<li>Sight</li>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</JoyGiverDef>
+
+
+
+	<!-- Incense burners -->
+
+	<ThingDef ParentName="FurnitureWithQualityBase">
+		<defName>IncenseBurner</defName>
+		<label>incense burner</label>
+		<description>A beautifully carved piece of stone for butrning incense. Refuelable and easy to walk around.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Things/Items/Rebelthroneroom/incense_burner</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.7,0.7)</drawSize>
+			<drawRotated>false</drawRotated>
+			<allowFlip>false</allowFlip>
+		</graphicData>
+		<clearBuildingArea>false</clearBuildingArea>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>5</pathCost>
+
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+
+		<fillPercent>0.20</fillPercent>
+		<statBases>
+			<Mass>3</Mass>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Beauty>8</Beauty>
+			<WorkToBuild>880</WorkToBuild>
+			<Flammability>0</Flammability>
+			<MeditationFocusStrength>0.1</MeditationFocusStrength>
+			<JoyGainFactor>1</JoyGainFactor>
+		</statBases>
+		<selectable>true</selectable>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>15</costStuffCount>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<resourcesFractionWhenDeconstructed>0.5</resourcesFractionWhenDeconstructed>
+		<placeWorkers>
+			<li>PlaceWorker_SmokeCloudMaker</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>3.1</fuelConsumptionRate>
+				<fuelCapacity>8</fuelCapacity>
+				<fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+				<fuelFilter>
+					<thingDefs>
+						<li>BaradinIncense</li>
+					</thingDefs>
+				</fuelFilter>
+				<initialFuelPercent>0</initialFuelPercent>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(206,215,66,0)</glowColor>
+			</li>
+
+
+			<li Class="CompProperties_GiveHediffSeverity">
+				<hediff>IncenseHigh</hediff>
+				<range>5.9</range>
+				<severityPerSecond>0.2</severityPerSecond>
+				<drugExposure>true</drugExposure>
+				<chemical>Baradin</chemical>
+				<allowMechs>false</allowMechs>
+			</li>
+			<li Class="CompProperties_SmokeCloudMaker">
+				<sourceStreamEffect>BurnbongSmoke</sourceStreamEffect>
+				<cloudRadius>5.9</cloudRadius>
+				<fleckScale>2</fleckScale>
+				<cloudFleck>AutobongSmoke</cloudFleck>
+				<fleckSpawnMTB>250</fleckSpawnMTB>
+			</li>
+
+			<li Class="CompProperties_FireOverlay">
+				<fireSize>0.2</fireSize>
+				<offset>(0,0,0.26)</offset>
+			</li>
+			<li>
+				<compClass>CompGatherSpot</compClass>
+			</li>
+		</comps>
+		<designationCategory>Furniture</designationCategory>
+
+		<building>
+
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+			<destroySound>BuildingDestroyed_Wood_Small</destroySound>
+			<buildingTags>
+				<li>RitualFocus</li>
+			</buildingTags>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="FurnitureWithQualityBase">
+		<defName>OrnateIncenseBurner</defName>
+		<label>ornate incense burner</label>
+		<description>A large, beautifully carved piece of stone for burning incense. Often used as a shrine for revolutionaries. Refuelable, and burns for longer than smaller burners.</description>
+		<thingClass>Building_Art</thingClass>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Things/Items/Rebelthroneroom/incense_burner_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<drawOffset>(0,0,0.5)</drawOffset>
+			<drawRotated>false</drawRotated>
+			<allowFlip>false</allowFlip>
+		</graphicData>
+		<clearBuildingArea>false</clearBuildingArea>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>48</pathCost>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<fillPercent>0.35</fillPercent>
+		<statBases>
+			<Mass>15</Mass>
+			<MaxHitPoints>80</MaxHitPoints>
+			<Beauty>50</Beauty>
+			<WorkToBuild>12000</WorkToBuild>
+			<Flammability>0</Flammability>
+			<MeditationFocusStrength>0.2</MeditationFocusStrength>
+			<JoyGainFactor>1.2</JoyGainFactor>
+		</statBases>
+		<size>(2,1)</size>
+		<selectable>true</selectable>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>100</costStuffCount>
+		<costList>
+			<Jade>25</Jade>
+			<WoodLog>25</WoodLog>
+		</costList>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<resourcesFractionWhenDeconstructed>0.7</resourcesFractionWhenDeconstructed>
+		<placeWorkers>
+			<li>PlaceWorker_SmokeCloudMaker</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>2.8</fuelConsumptionRate>
+				<fuelCapacity>20</fuelCapacity>
+				<fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+				<fuelFilter>
+					<thingDefs>
+						<li>BaradinIncense</li>
+					</thingDefs>
+				</fuelFilter>
+				<initialFuelPercent>0</initialFuelPercent>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(206,215,66,0)</glowColor>
+			</li>
+
+
+			<li Class="CompProperties_GiveHediffSeverity">
+				<hediff>IncenseHigh</hediff>
+				<range>9.9</range>
+				<severityPerSecond>0.3</severityPerSecond>
+				<drugExposure>true</drugExposure>
+				<chemical>Baradin</chemical>
+				<allowMechs>false</allowMechs>
+			</li>
+			<li Class="CompProperties_SmokeCloudMaker">
+				<sourceStreamEffect>BurnbongSmoke</sourceStreamEffect>
+				<cloudRadius>9.9</cloudRadius>
+				<fleckScale>3</fleckScale>
+				<cloudFleck>AutobongSmoke</cloudFleck>
+				<fleckSpawnMTB>250</fleckSpawnMTB>
+			</li>
+
+			<li Class="CompProperties_FireOverlay">
+				<fireSize>0.35</fireSize>
+				<offset>(0,0,0.46)</offset>
+			</li>
+			<li>
+				<compClass>CompGatherSpot</compClass>
+			</li>
+		</comps>
+		<designationCategory>Furniture</designationCategory>
+
+		<building>
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+			<destroySound>BuildingDestroyed_Wood_Small</destroySound>
+			<buildingTags>
+				<li>RitualFocus</li>
+			</buildingTags>
+		</building>
+	</ThingDef>
+
+	<!-- strategy table -->
+
+	<ThingDef ParentName="FurnitureWithQualityBase">
+		<defName>StrategyTable</defName>
+		<label>strategy table</label>
+		<description>A ceremonial table with maps of the area, lists of resources, and plans to destroy the empire. Improves intellectual skill.</description>
+		<graphicData>
+			<texPath>Things/Items/Rebelthroneroom/Strategy_table</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3.3,2.2)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<researchPrerequisites>
+			<li>RebelFurniture</li>
+		</researchPrerequisites>
+		<staticSunShadowHeight>0.2</staticSunShadowHeight>
+		<castEdgeShadows>True</castEdgeShadows>
+		<altitudeLayer>Building</altitudeLayer>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<fillPercent>0.40</fillPercent>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<building>
+			<joyKind>Planning_Resistance</joyKind>
+			<buildingSizeCategory>Medium</buildingSizeCategory>
+		</building>
+		<statBases>
+			<MaxHitPoints>650</MaxHitPoints>
+			<WorkToBuild>12000</WorkToBuild>
+			<Mass>80</Mass>
+			<Flammability>0.2</Flammability>
+			<Beauty>4</Beauty>
+			<JoyGainFactor>1</JoyGainFactor>
+		</statBases>
+		<size>(3,2)</size>
+		<stuffCategories>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>80</costStuffCount>
+		<costList>
+			<Cloth>50</Cloth>
+			<WoodLog>30</WoodLog>
+		</costList>
+		<pathCost>48</pathCost>
+		<passability>PassThroughOnly</passability>
+		<designationCategory>Furniture</designationCategory>
+		<canOverlapZones>false</canOverlapZones>
+		<placeWorkers>
+			<li>PlaceWorker_NeverAdjacentUnstandable</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+	</ThingDef>
+
+	<JoyGiverDef>
+		<defName>Plan_Resistance</defName>
+		<giverClass>JoyGiver_PlayBilliards</giverClass>
+		<baseChance>4</baseChance>
+		<thingDefs>
+			<li>StrategyTable</li>
+		</thingDefs>
+		<jobDef>Plan_Resistance</jobDef>
+		<joyKind>Planning_Resistance</joyKind>
+		<requiredCapacities>
+			<li>Sight</li>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</JoyGiverDef>
+
+	<JobDef>
+		<defName>Plan_Resistance</defName>
+		<driverClass>JobDriver_PlayBilliards</driverClass>
+		<reportString>Planning the glorious rebellion.</reportString>
+		<joyDuration>4000</joyDuration>
+		<joyMaxParticipants>6</joyMaxParticipants>
+		<joySkill>Intellectual</joySkill>
+		<joyXpPerTick>0.01</joyXpPerTick>
+		<joyKind>Planning_Resistance</joyKind>
+		<taleOnCompletion>PlannedResistance</taleOnCompletion>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<JoyKindDef>
+		<defName>Planning_Resistance</defName>
+		<label>Planning the glorious rebellion</label>
+	</JoyKindDef>
+
+	<TaleDef>
+		<defName>PlannedResistance</defName>
+		<label>planned resistance</label>
+		<taleClass>Tale_SinglePawnAndDef</taleClass>
+		<type>Volatile</type>
+		<defSymbol>OBJECT</defSymbol>
+		<baseInterest>0.5</baseInterest>
+		<rulePack>
+			<rulesStrings>
+				<li>tale_noun->[PAWN_nameDef] planning at the [OBJECT_label]</li>
+				<li>tale_noun->[PAWN_nameDef] planning operations at the [OBJECT_label]</li>
+				<li>tale_noun->[PAWN_nameDef] enjoying [PAWN_objective]self at a [OBJECT_label]</li>
+				<li>image->[PAWN_nameFull] poised over the [OBJECT_label], [circumstance_group]</li>
+				<li>circumstance_phrase->tense with energy</li>
+				<li>circumstance_phrase->planning [PAWN_possessive] next action</li>
+				<li>circumstance_phrase->[angstyverb] with a [AdjectiveAngsty] expression</li>
+				<li>circumstance_phrase->wearing a [AdjectiveAngsty] look</li>
+				<li>circumstance_phrase->[angstyverb]</li>
+				<li>desc_sentence->A [Color] aurora shines in the background.</li>
+				<li>desc_sentence->In the distance, a [Community] is visible.</li>
+				<li>desc_sentence->In the distance, a [TerrainFeature] is visible.</li>
+				<li>desc_sentence->[Quantity_adjphrase] [PersonJob]s are playing as well.</li>
+				<li>desc_sentence->[Quantity_adjphrase] [Animal]s play nearby.</li>
+				<li>desc_sentence->[PAWN_nameDef] is glowing with a [Color] aura.</li>
+				<li>desc_sentence->[PAWN_nameDef]'s features are exaggerated.</li>
+				<li>desc_sentence->[PAWN_nameDef] towers above the scene.</li>
+			</rulesStrings>
+		</rulePack>
+	</TaleDef>
+
+</Defs>

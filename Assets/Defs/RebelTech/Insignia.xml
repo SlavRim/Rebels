@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>ImperialInsignia</defName>
+		<label>imperial insignia</label>
+		<description>An imperial insignia, carried by all citizens of the empire. Accepted by the rebel alliance as a trophy of the war of liberation.</description>
+		<graphicData>
+			<texPath>Things/Items/Insignia</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>50</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>75</MarketValue>
+			<Mass>0.01</Mass>
+			<Flammability>0.1</Flammability>
+			<DeteriorationRate>1.0</DeteriorationRate>
+			<RoyalFavorValue>1.000</RoyalFavorValue>
+		</statBases>
+		<intricate>true</intricate>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+
+		<allowedArchonexusCount>10</allowedArchonexusCount>
+	</ThingDef>
+
+
+
+
+</Defs>
+

@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<FactionDef ParentName="FactionBase">
+		<defName>Rebels</defName>
+		<label>Rebel Alliance</label>
+		<categoryTag>Rebels</categoryTag>
+		<description>A rebellious movement against the empire, fighting a guerilla warfare to free slaves and defeat the high stellarch. Though lacking the empire's ultratech tools, the rebels are tenacious and full of bloody determinism. Be warned: if you earn 10 honour or ally with the Empire, the Rebels will become hostile to you.</description>
+		<pawnSingular>rebel</pawnSingular>
+		<pawnsPlural>rebels</pawnsPlural>
+		<settlementGenerationWeight>1</settlementGenerationWeight>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
+		<maxCountAtGameStart>1</maxCountAtGameStart>
+		<canSiege>true</canSiege>
+		<canStageAttacks>true</canStageAttacks>
+		<leaderTitle>rebel warsinger</leaderTitle>
+		<royalFavorLabel>rebel trust</royalFavorLabel>
+
+
+		<modExtensions>
+			<li Class="FactionExtensionCore.DefModExtension_FactionRelations">
+				<affectedFaction>Empire</affectedFaction>
+				<favorForEnemyRelations>10</favorForEnemyRelations>
+			</li>
+		</modExtensions>
+
+		<royalFavorIconPath>Things/Icons/RebelFavor</royalFavorIconPath>
+		<leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+		<factionIconPath>Things/Icons/RebelMapIcon</factionIconPath>
+
+		<factionNameMaker>NamerFactionRebel</factionNameMaker>
+		<settlementNameMaker>NamerSettlementRebel</settlementNameMaker>
+		<allowedCultures>
+			<li>Corunan</li>
+		</allowedCultures>
+		<requiredMemes>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Proselytizer</li>
+		</requiredMemes>
+
+		<disallowedPrecepts>
+			<li>Slavery_Classic</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Disapproved</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Horrible</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Acceptable</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Honorable</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">DrugUse_Prohibited</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">DrugUse_MedicalOnly</li>
+
+		</disallowedPrecepts>
+
+		<disallowedMemes>
+
+		</disallowedMemes>
+
+
+
+
+		<structureMemeWeights>
+			<Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
+		</structureMemeWeights>
+
+		<techLevel>Industrial</techLevel>
+		<backstoryFilters>
+			<li>
+				<categories>
+					<li>Outlander</li>
+				</categories>
+				<commonality>0.4</commonality>
+			</li>
+			<li>
+				<categories>
+					<li>Tribal</li>
+				</categories>
+				<commonality>0.4</commonality>
+			</li>
+			<li>
+				<categories>
+					<li>Offworld</li>
+				</categories>
+				<commonality>0.2</commonality>
+			</li>
+		</backstoryFilters>
+		<apparelStuffFilter>
+			<stuffCategoriesToAllow>
+				<li>Metallic</li>
+				<li>Fabric</li>
+			</stuffCategoriesToAllow>
+			<!--     <disallowedThingDefs>
+        <li>DevilstrandCloth</li>
+      </disallowedThingDefs> -->
+		</apparelStuffFilter>
+		<allowedArrivalTemperatureRange>-30~56</allowedArrivalTemperatureRange>
+		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+		<colorSpectrum>
+			<li>(0.600, 0.188, 0.168)</li>
+		</colorSpectrum>
+
+
+
+
+		<fixedLeaderKinds>
+			<li>Rebel_Warsinger</li>
+		</fixedLeaderKinds>
+		<royalTitleTags>
+			<li>RebelTitle</li>
+		</royalTitleTags>
+		<baseTraderKinds>
+			<li>Base_Rebel_Standard</li>
+
+		</baseTraderKinds>
+		<caravanTraderKinds>
+			<li>Rebel_Caravan_Trader</li>
+			<li>Caravan_Outlander_BulkGoods</li>
+			<li>Caravan_Outlander_Exotic</li>
+			<li>Rebel_Caravan_TributeCollector</li>
+		</caravanTraderKinds>
+
+
+
+
+		<royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
+		<royalTitleInheritanceRelations>
+			<li>Child</li>
+			<li>Grandchild</li>
+			<li>GreatGrandchild</li>
+			<li>NephewOrNiece</li>
+			<li>Spouse</li>
+			<li>Sibling</li>
+			<li>HalfSibling</li>
+			<li>Cousin</li>
+			<li>Parent</li>
+			<li>UncleOrAunt</li>
+		</royalTitleInheritanceRelations>
+		<raidCommonalityFromPointsCurve>
+			<points>
+				<li>(0, 1)</li>
+			</points>
+		</raidCommonalityFromPointsCurve>
+
+
+		<raidLootMaker>RebelRaidLootMaker</raidLootMaker>
+
+
+		<maxPawnCostPerTotalPointsCurve>
+			<points>
+				<li>(500, 100)</li>
+				<li>(1000, 150)</li>
+				<li>(2000, 250)</li>
+				<li>(2001, 10000)</li>
+			</points>
+		</maxPawnCostPerTotalPointsCurve>
+
+
+
+
+
+
+
+
+		<pawnGroupMakers>
+			<!-- Traders - TODO -->
+			<li>
+				<kindDef>Trader</kindDef>
+				<traders>
+					<Rebel_Trader>1</Rebel_Trader>
+				</traders>
+				<carriers>
+					<Muffalo>6</Muffalo>
+					<Dromedary>5</Dromedary>
+					<Alpaca>2</Alpaca>
+					<Elephant>1</Elephant>
+				</carriers>
+				<guards>
+					<Rebel_Wolf>3</Rebel_Wolf>
+					<Rebel_Bear>1</Rebel_Bear>
+					<Rebel_Hawk>3</Rebel_Hawk>
+				</guards>
+			</li>
+			<li>
+				<!-- Normal fights -->
+				<kindDef>Combat</kindDef>
+				<commonality>100</commonality>
+				<options>
+					<Rebel_Wolf>3</Rebel_Wolf>
+					<Rebel_Bear>1</Rebel_Bear>
+					<Rebel_Hawk>3</Rebel_Hawk>
+					<Rebel_Vulture>2</Rebel_Vulture>
+				</options>
+			</li>
+
+			<li>
+				<!-- Base defense, mainly ranged with melee mix-ins -->
+				<kindDef>Settlement</kindDef>
+				<options>
+					<Rebel_Wolf>3</Rebel_Wolf>
+					<Rebel_Bear>1</Rebel_Bear>
+					<Rebel_Hawk>3</Rebel_Hawk>
+					<Rebel_Vulture>2</Rebel_Vulture>
+				</options>
+			</li>
+		</pawnGroupMakers>
+		<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+		<configurationListOrderPriority>70</configurationListOrderPriority>
+	</FactionDef>
+
+	<ThingSetMakerDef>
+		<defName>RebelRaidLootMaker</defName>
+		<root Class="ThingSetMaker_MarketValue">
+			<fixedParams>
+				<filter>
+					<thingDefs>
+						<li>GoJuice</li>
+						<li>Yayo</li>
+						<li>MedicineIndustrial</li>
+						<li>Steel</li>
+						<li>MealSurvivalPack</li>
+					</thingDefs>
+				</filter>
+			</fixedParams>
+		</root>
+	</ThingSetMakerDef>
+
+	<!-- =============================== Names =============================== -->
+
+	<RulePackDef>
+		<defName>NamerFactionRebel</defName>
+		<!--   <include>
+      <li>RebelNameUtility</li>
+    </include> -->
+		<rulePack>
+			<rulesStrings>
+
+				<li>r_name->The [rebel] [alliance]</li>
+				<li>r_name->[alliance] of the [people]</li>
+				<!--	<li>r_name->[alliance] of [rebel] [people]</li> -->
+				<li>r_name->The [alliance]'s [hope]</li>
+				<!--	<li>r_name->The [hope] of the [rebel] [people]</li> -->
+				<li>r_name->The [empire]'s [blight]</li>
+
+
+				<li>rebel(p=3)->Defiant</li>
+				<li>rebel(p=2)->Rebel</li>
+
+
+
+
+				<li>alliance->Alliance</li>
+				<li>alliance->Resistance</li>
+				<li>alliance->Revolution</li>
+				<li>alliance->Insurgency</li>
+				<li>alliance->Collective</li>
+				<li>alliance->Militia</li>
+
+				<li>people->Guerillas</li>
+				<li>people->Insurgents</li>
+				<li>people->Bolsheviks</li>
+				<li>people->Sandinistas</li>
+				<li>people->Partisans</li>
+
+				<li>hope->Hope</li>
+				<li>hope->Strength</li>
+				<li>hope->Fist</li>
+				<li>hope->Sword</li>
+				<li>hope->Shield</li>
+				<li>hope->Fury</li>
+				<li>hope->Curse</li>
+
+				<li>blight(p=3)->Blight</li>
+				<li>blight->Bane</li>
+				<li>blight->Menace</li>
+				<li>blight->Woe</li>
+				<li>blight->Ruin</li>
+				<li>blight->Peril</li>
+
+				<li>empire->Imperium</li>
+				<li>empire->Empire</li>
+				<li>empire->Arrogant Empire</li>
+				<li>empire->Wretched Empire</li>
+				<li>empire->Stellarch</li>
+				<li>empire->Slavers</li>
+
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+
+
+	<RulePackDef>
+		<defName>NamerSettlementRebel</defName>
+		<!--   <include>
+      <li>RebelNameUtility</li>
+    </include> -->
+		<rulePack>
+			<rulesStrings>
+				<li>r_name->[townname_wordgen]</li>
+
+				<li>townname_wordgen->[RebelName1][RebelName2]</li>
+				<li>townname_wordgen(p=2)->[Fort] [RebelName1][RebelName2]</li>
+				<li>townname_wordgen->[RebelName1][RebelName2] [Base]</li>
+				<li>townname_wordgen->[empire]'s [blight]</li>
+
+				<li>RebelName1->Arl</li>
+				<li>RebelName1->Grel</li>
+				<li>RebelName1->Bruv</li>
+				<li>RebelName1->Crat</li>
+				<li>RebelName1->Lecha</li>
+				<li>RebelName1->Brocha</li>
+				<li>RebelName1->Bifth</li>
+				<li>RebelName1->Bruv</li>
+				<li>RebelName1->Crat</li>
+				<li>RebelName1->Junt</li>
+
+				<li>RebelName2->un</li>
+				<li>RebelName2->chen</li>
+				<li>RebelName2->wich</li>
+				<li>RebelName2->sel</li>
+				<li>RebelName2->heim</li>
+				<li>RebelName2->den</li>
+				<li>RebelName2->bronn</li>
+				<li>RebelName2->gart</li>
+				<li>RebelName2->gen</li>
+
+				<li>Fort(p=2)->Fort</li>
+				<li>Fort->Castle</li>
+				<li>Fort->Camp</li>
+				<li>Fort->Point</li>
+				<li>Fort->Sietch</li>
+
+				<li>Base(p=3)->base</li>
+				<li>Base(p=3)->outpost</li>
+				<li>Base->stronghold</li>
+				<li>Base->keep</li>
+				<li>Base->hold</li>
+				<li>Base->citadel</li>
+				<li>Base->hill</li>
+				<li>Base->duro</li>
+				<li>Base->citadel</li>
+
+				<li>blight(p=3)->blight</li>
+				<li>blight->bane</li>
+				<li>blight->menace</li>
+				<li>blight->woe</li>
+				<li>blight->calamity</li>
+				<li>blight->peril</li>
+				<li>blight->downfall</li>
+
+				<li>empire->Imperium</li>
+				<li>empire->Empire</li>
+				<li>empire->Stellarch</li>
+
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+
+
+
+
+
+
+
+
+
+
+
+
+</Defs>

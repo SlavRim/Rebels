@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ============================= Permits from Rebel titles ============================= -->
+
+	<RoyalTitlePermitDef>
+		<defName>TradeSettlement</defName>
+		<label>trade with settlements</label>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef>
+		<defName>TradeOrbital</defName>
+		<label>trade with orbital traders</label>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef>
+		<defName>TradeCaravan</defName>
+		<label>trade with caravans</label>
+	</RoyalTitlePermitDef>
+
+
+	<!-- ============================= Faction permits ============================= -->
+
+	<!-- Econ -->
+
+	<RoyalTitlePermitDef Name="DropResourcesBase" Abstract="True">
+		<workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<cooldownDays>20</cooldownDays>
+		<usableOnWorldMap>true</usableOnWorldMap>
+		<royalAid>
+			<targetingRange>39.9</targetingRange>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>FuelDrop</defName>
+		<label>Fuel drop</label>
+		<description>Call for a drop of 150 wood and 75 chemfuel.</description>
+		<minTitle>Comrade_One</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,0)</uiPosition>
+		<royalAid>
+			<itemsToDrop>
+				<WoodLog>150</WoodLog>
+				<Chemfuel>75</Chemfuel>
+			</itemsToDrop>
+			<favorCost>3</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>SupplyDrop</defName>
+		<label>Supply drop</label>
+		<description>Call for a drop of 200 wood, 75 steel, 75 chemfuel, and 2 components.</description>
+		<minTitle>Comrade_Two</minTitle>
+		<faction>Rebels</faction>
+		<prerequisite>FuelDrop</prerequisite>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,0)</uiPosition>
+		<royalAid>
+			<itemsToDrop>
+				<WoodLog>200</WoodLog>
+				<Chemfuel>75</Chemfuel>
+				<Steel>75</Steel>
+				<ComponentIndustrial>2</ComponentIndustrial>
+			</itemsToDrop>
+			<favorCost>6</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>LeatherDrop</defName>
+		<label>Materials drop</label>
+		<description>Call for a drop of 75 cloth and 75 lightleather.</description>
+		<minTitle>Comrade_One</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,1)</uiPosition>
+		<royalAid>
+			<itemsToDrop>
+				<Cloth>75</Cloth>
+				<Leather_Light>75</Leather_Light>
+			</itemsToDrop>
+			<favorCost>4</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>LeatherDropII</defName>
+		<label>Superior materials drop</label>
+		<description>Call for a drop of 75 synthread, 75 alpaca wool, and 75 heavy leather.</description>
+		<minTitle>Comrade_One</minTitle>
+		<faction>Rebels</faction>
+		<prerequisite>LeatherDrop</prerequisite>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,1)</uiPosition>
+		<royalAid>
+			<itemsToDrop>
+				<Synthread>75</Synthread>
+				<WoolAlpaca>75</WoolAlpaca>
+				<Leather_Heavy>75</Leather_Heavy>
+			</itemsToDrop>
+			<favorCost>8</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+
+
+
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>CombatSupplies</defName>
+		<label>combat drug drop</label>
+		<description>Call for a drop of 2 go-juice, 4 medicine, of 4 pain-killing Baradin teas.</description>
+		<minTitle>Comrade_One</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,2)</uiPosition>
+		<royalAid>
+			<itemsToDrop>
+				<GoJuice>2</GoJuice>
+				<MedicineIndustrial>4</MedicineIndustrial>
+				<BaradinTea>4</BaradinTea>
+			</itemsToDrop>
+			<favorCost>3</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>CombatSuppliesII</defName>
+		<label>heavy combat drug drop</label>
+		<description>Call for a drop of 4 go-juice, 8 medicine, and 4 doses of pain-killing Baradene.</description>
+		<minTitle>Comrade_Two</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,2)</uiPosition>
+		<prerequisite>CombatSupplies</prerequisite>
+		<royalAid>
+			<itemsToDrop>
+				<GoJuice>4</GoJuice>
+				<MedicineIndustrial>8</MedicineIndustrial>
+				<Baradene>4</Baradene>
+			</itemsToDrop>
+			<favorCost>6</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef ParentName="DropResourcesBase">
+		<defName>CombatSuppliesIII</defName>
+		<label>ultimate combat drug drop</label>
+		<description>Call for a drop of 6 go-juice, 12 medicine, 6 doses of pain-killing Baradene, and a single-use monolauncher.</description>
+		<minTitle>Comrade_Three</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(2,2)</uiPosition>
+		<prerequisite>CombatSuppliesII</prerequisite>
+
+		<royalAid>
+			<itemsToDrop>
+				<GoJuice>6</GoJuice>
+				<MedicineIndustrial>10</MedicineIndustrial>
+				<Baradene>6</Baradene>
+				<Monolauncher>1</Monolauncher>
+			</itemsToDrop>
+			<favorCost>8</favorCost>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+	<!--  fjerkfjekfjeifj -->
+
+
+	<RoyalTitlePermitDef>
+		<defName>CallrebelLaborerTeam</defName>
+		<label>call laborer team</label>
+		<description>Call a group of 2 laborers to assist you for 3 days. These workers can only do general labor tasks. You can control them as though they were your own colonists. You are required to keep them safe.</description>
+		<workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
+		<minTitle>Comrade_One</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,3.5)</uiPosition>
+		<royalAid>
+			<favorCost>3</favorCost>
+			<pawnKindDef>Rebel_Laborer</pawnKindDef>
+			<pawnCount>2</pawnCount>
+			<aidDurationDays>3</aidDurationDays>
+		</royalAid>
+		<cooldownDays>20</cooldownDays>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef>
+		<defName>CallrebelLaborerSquad</defName>
+		<label>call a large laborer team</label>
+		<description>Call a group of 3 laborers to assist you for 5 days. These workers can only do general labor tasks. You can control them as though they were your own colonists. You are required to keep them safe.</description>
+		<workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
+		<minTitle>Comrade_Two</minTitle>
+		<prerequisite>CallrebelLaborerTeam</prerequisite>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,3.5)</uiPosition>
+		<royalAid>
+			<favorCost>5</favorCost>
+			<pawnKindDef>Rebel_Laborer</pawnKindDef>
+			<pawnCount>3</pawnCount>
+			<aidDurationDays>5</aidDurationDays>
+		</royalAid>
+		<cooldownDays>24</cooldownDays>
+	</RoyalTitlePermitDef>
+
+	<!-- <RoyalTitlePermitDef>
+   <defName>CallrebelLaborerUnion</defName>
+    <label>call a huge laborer team</label>
+    <description>Call a group of 8 laborers to assist you for 1 day. These workers can only do general labor tasks. You can control them as though they were your own colonists. You are required to keep them safe.</description>
+    <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
+   <minTitle>Heroic_Comrade</minTitle> 
+   <prerequisite>CallrebelLaborerTeam</prerequisite>
+    <faction>Rebels</faction>
+    <permitPointCost>1</permitPointCost>
+    <uiPosition>(1,2)</uiPosition>
+    <royalAid>
+      <favorCost>8</favorCost>
+      <pawnKindDef>Rebel_Common_Laborer</pawnKindDef>     
+      <pawnCount>8</pawnCount>
+      <aidDurationDays>1</aidDurationDays>
+    </royalAid>
+    <cooldownDays>32</cooldownDays>
+  </RoyalTitlePermitDef>-->
+
+
+	<!-- Melee -->
+
+	<RoyalTitlePermitDef>
+		<defName>CallWolfPair</defName>
+		<label>call two rebel wolves.</label>
+		<description>Call a pair of rebel melee wolves to fight alongside you.</description>
+		<workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
+		<minTitle>Comrade_Two</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,5)</uiPosition>
+		<royalAid>
+			<favorCost>3</favorCost>
+			<pawnKindDef>Rebel_Wolf</pawnKindDef>
+			<pawnCount>2</pawnCount>
+			<targetingRange>39.9</targetingRange>
+		</royalAid>
+		<cooldownDays>20</cooldownDays>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef>
+		<defName>CallBearteam</defName>
+		<label>call three rebel bears.</label>
+		<description>Call three rebel melee bears to fight alongside you.</description>
+		<workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
+		<minTitle>Comrade_Three</minTitle>
+		<prerequisite>CallWolfPair</prerequisite>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,5)</uiPosition>
+		<royalAid>
+			<favorCost>6</favorCost>
+			<pawnKindDef>Rebel_Bear</pawnKindDef>
+			<pawnCount>3</pawnCount>
+			<targetingRange>39.9</targetingRange>
+		</royalAid>
+		<cooldownDays>24</cooldownDays>
+	</RoyalTitlePermitDef>
+
+
+	<!-- Sniper -->
+
+	<RoyalTitlePermitDef>
+		<defName>CallHawkPair</defName>
+		<label>call two rebel hawks.</label>
+		<description>Call a pair of ranged rebel hawks to fight alongside you.</description>
+		<workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
+		<minTitle>Comrade_Two</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(0,6)</uiPosition>
+		<royalAid>
+			<favorCost>3</favorCost>
+			<pawnKindDef>Rebel_Hawk</pawnKindDef>
+			<pawnCount>2</pawnCount>
+			<targetingRange>39.9</targetingRange>
+		</royalAid>
+		<cooldownDays>20</cooldownDays>
+	</RoyalTitlePermitDef>
+
+
+	<RoyalTitlePermitDef>
+		<defName>CallVultureteam</defName>
+		<label>call three rebel vultures.</label>
+		<description>Call three rebel vultures equipped with anti-armour rifles to fight alongside you.</description>
+		<workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
+		<minTitle>Comrade_Three</minTitle>
+		<prerequisite>CallHawkPair</prerequisite>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<uiPosition>(1,6)</uiPosition>
+		<royalAid>
+			<favorCost>6</favorCost>
+			<pawnKindDef>Rebel_Vulture</pawnKindDef>
+			<pawnCount>3</pawnCount>
+			<targetingRange>39.9</targetingRange>
+		</royalAid>
+		<cooldownDays>24</cooldownDays>
+	</RoyalTitlePermitDef>
+
+
+
+
+	<RoyalTitlePermitDef>
+		<defName>CallShellSalvo</defName>
+		<label>call shell salvo</label>
+		<description>Call a salvo of 15 small shells.</description>
+		<workerClass>RoyalTitlePermitWorker_OrbitalStrike</workerClass>
+		<minTitle>Comrade_Three</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<!--    <prerequisite>CallOrbitalStrike</prerequisite> -->
+		<cooldownDays>24</cooldownDays>
+		<uiPosition>(0,7)</uiPosition>
+		<royalAid>
+			<favorCost>4</favorCost>
+			<targetingRange>44.9</targetingRange>
+			<radius>20</radius>
+			<explosionRadiusRange>2</explosionRadiusRange>
+			<explosionCount>15</explosionCount>
+			<intervalTicks>26</intervalTicks>
+			<warmupTicks>70</warmupTicks>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+	<RoyalTitlePermitDef>
+		<defName>CallShellStorm</defName>
+		<label>call shell storm.</label>
+		<description>call a storm of 30 small shells over a large area.</description>
+		<workerClass>RoyalTitlePermitWorker_OrbitalStrike</workerClass>
+		<minTitle>Comrade_Four</minTitle>
+		<faction>Rebels</faction>
+		<prerequisite>CallShellSalvo</prerequisite>
+		<permitPointCost>1</permitPointCost>
+		<cooldownDays>24</cooldownDays>
+		<uiPosition>(1,7)</uiPosition>
+		<royalAid>
+			<favorCost>6</favorCost>
+			<targetingRange>50</targetingRange>
+			<radius>25</radius>
+			<explosionRadiusRange>2.2</explosionRadiusRange>
+			<explosionCount>30</explosionCount>
+			<intervalTicks>17</intervalTicks>
+			<warmupTicks>150</warmupTicks>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+
+
+	<RoyalTitlePermitDef>
+		<defName>CallNuke</defName>
+		<label>call a nuclear strike</label>
+		<description>Call a tactical nuclear strike, obliterating a huge area. Short delay after targetting so the user can escape.</description>
+		<workerClass>RoyalTitlePermitWorker_OrbitalStrike</workerClass>
+		<minTitle>Comrade_Six</minTitle>
+		<faction>Rebels</faction>
+		<prerequisite>CallShellStorm</prerequisite>
+		<permitPointCost>2</permitPointCost>
+		<cooldownDays>40</cooldownDays>
+		<uiPosition>(2,7)</uiPosition>
+		<royalAid>
+			<favorCost>10</favorCost>
+			<targetingRange>45</targetingRange>
+			<radius>10</radius>
+			<explosionRadiusRange>35</explosionRadiusRange>
+			<explosionCount>6</explosionCount>
+			<intervalTicks>15</intervalTicks>
+			<warmupTicks>250</warmupTicks>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+
+
+	<!-- Utility -->
+
+	<RoyalTitlePermitDef>
+		<defName>CallTransportShuttle</defName>
+		<label>call transport shuttle</label>
+		<description>Call a shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles.</description>
+		<workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+		<minTitle>Comrade_Two</minTitle>
+		<faction>Rebels</faction>
+		<permitPointCost>1</permitPointCost>
+		<cooldownDays>40</cooldownDays>
+		<usableOnWorldMap>true</usableOnWorldMap>
+		<uiPosition>(0,8)</uiPosition>
+		<royalAid>
+			<favorCost>8</favorCost>
+			<targetingRange>44.9</targetingRange>
+			<targetingRequireLOS>false</targetingRequireLOS>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+
+	<RoyalTitlePermitDef>
+		<defName>CallTransportShuttleTwo</defName>
+		<label>call transport shuttle more often</label>
+		<description>Call a shuttle for your own use. Cooldown reduced from 40 days to 20. It will transport colonists, items, and animals anywhere you like within 70 world tiles.</description>
+		<workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+		<minTitle>Comrade_Four</minTitle>
+		<faction>Rebels</faction>
+		<prerequisite>CallTransportShuttle</prerequisite>
+		<permitPointCost>1</permitPointCost>
+		<cooldownDays>20</cooldownDays>
+		<usableOnWorldMap>true</usableOnWorldMap>
+		<uiPosition>(1,8)</uiPosition>
+		<royalAid>
+			<favorCost>8</favorCost>
+			<targetingRange>44.9</targetingRange>
+			<targetingRequireLOS>false</targetingRequireLOS>
+		</royalAid>
+	</RoyalTitlePermitDef>
+
+</Defs>

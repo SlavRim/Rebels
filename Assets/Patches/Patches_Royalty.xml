@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Royalty</li>
+    </mods> 	
+
+	
+	<match Class="PatchOperationSequence">
+
+
+	<operations>
+	
+
+<li Class="PatchOperationAdd">
+				<xpath>*/FactionDef[defName="Empire"]</xpath>
+				<value>
+					<modExtensions>
+						<li Class="FactionExtensionCore.DefModExtension_FactionRelations">
+							<affectedFaction>Rebels</affectedFaction>
+							<favorForEnemyRelations>10</favorForEnemyRelations>
+						</li>
+					</modExtensions>
+				</value>
+			</li>
+	
+	
+	<li Class="PatchOperationAdd">
+	<xpath>Defs/PawnKindDef[defName = "Empire_Common_Lodger" or defName = "Empire_Common_Laborer" or defName = "Empire_Fighter_Trooper" or defName = "Empire_Fighter_Grenadier" or defName = "Empire_Fighter_Janissary" or defName = "Empire_Fighter_Champion" or defName = "Empire_Fighter_Cataphract" or defName = "Empire_Fighter_StellicGuardRanged" or defName = "Empire_Fighter_StellicGuardMelee" or defName = "Empire_Royal_NobleWimp" or defName = "Empire_Royal_Yeoman" or defName = "Empire_Royal_Acolyte" or defName = "Empire_Royal_Knight" or defName = "Empire_Royal_Praetor" or defName = "Empire_Royal_Baron" or defName = "Empire_Royal_Count" or defName = "Empire_Royal_Duke" or defName = "Empire_Royal_Consul" or defName = "Empire_Royal_Stellarch"]</xpath>
+	<value>
+		   <inventoryOptions>
+			<subOptionsTakeAll>
+       <li>
+         <thingDef>ImperialInsignia</thingDef>
+         <countRange>1~1</countRange>
+       </li>
+     </subOptionsTakeAll>
+   </inventoryOptions>
+	</value>
+	</li>
+	
+	<li Class="PatchOperationReplace">
+	<xpath>Defs/PawnKindDef[defName = "Empire_Common_Trader"]/inventoryOptions</xpath>
+	<value>
+		   <inventoryOptions>
+     <subOptionsTakeAll>
+       <li>
+         <thingDef>Silver</thingDef>
+         <countRange>30~100</countRange>
+       </li>
+	         <li>
+         <thingDef>ImperialInsignia</thingDef>
+         <countRange>1~1</countRange>
+       </li>
+     </subOptionsTakeAll>
+   </inventoryOptions>
+	</value>
+	</li>
+
+
+
+	<li Class="PatchOperationAdd">
+	<xpath>Defs/ThingDef[defName = "Bow_Short" or defName = "MeleeWeapon_Club" or defName = "MeleeWeapon_Knife" or defName = "MeleeWeapon_Ikwa" or defName = "MeleeWeapon_Spear"]/statBases</xpath>
+	<value>
+		<RoyalFavorValue>0.05000</RoyalFavorValue>
+	</value>
+	</li>
+
+
+	<li Class="PatchOperationAdd">
+	<xpath>Defs/ThingDef[defName = "Bow_Recurve" or defName = "Pila" or defName = "MeleeWeapon_Mace" or defName = "MeleeWeapon_Gladius" or defName = "MeleeWeapon_Axe"]/statBases</xpath>
+	<value>
+		<RoyalFavorValue>0.1000</RoyalFavorValue>
+	</value>
+	</li>
+	
+		<li Class="PatchOperationAdd">
+	<xpath>Defs/ThingDef[defName = "Bow_Great" or defName = "MeleeWeapon_LongSword"  or defName = "MeleeWeapon_Warhammer"]/statBases</xpath>
+	<value>
+		<RoyalFavorValue>0.15000</RoyalFavorValue>
+	</value>
+	</li>
+
+
+	
+	<li Class="PatchOperationAdd">
+	<xpath>Defs/ThingDef[defName = "Gun_Revolver"  or defName = "Gun_Autopistol" or defName = "Gun_MachinePistol" or defName = "Gun_BoltActionRifle" or defName = "Gun_PumpShotgun" or defName = "Weapon_GrenadeFrag" or defName = "Weapon_GrenadeMolotov" or defName = "Weapon_GrenadeEMP"]/statBases</xpath>
+	<value>
+		<RoyalFavorValue>0.2000</RoyalFavorValue>
+	</value>
+	</li>
+	
+	<li Class="PatchOperationAdd">
+	<xpath>Defs/ThingDef[defName = "Gun_SmokeLauncher" or defName = "Gun_IncendiaryLauncher" or defName = "Gun_EmpLauncher" or defName = "Gun_ChainShotgun" or defName = "Gun_HeavySMG" or defName = "Gun_LMG"]/statBases</xpath>
+	<value>
+		<RoyalFavorValue>0.3000</RoyalFavorValue>
+	</value>
+	</li>	
+	
+	<li Class="PatchOperationAdd">
+	<xpath>Defs/ThingDef[defName = "Gun_AssaultRifle" or defName = "Gun_SniperRifle" or defName = "Gun_Minigun" or defName = "Gun_TripleRocket"]/statBases</xpath>
+	<value>
+		<RoyalFavorValue>0.400</RoyalFavorValue>
+	</value>
+	</li>	
+
+
+
+		<li Class="PatchOperationAdd">
+	<xpath>Defs/ThingDef[defName = "Gun_ChargeRifle" or defName = "Gun_ChargeLance" or defName = "MeleeWeapon_MonoSword" or defName = "MeleeWeapon_Zeushammer" or defName = "MeleeWeapon_PlasmaSword"]/statBases</xpath>
+	<value>
+		<RoyalFavorValue>0.8000</RoyalFavorValue>
+	</value>
+	</li>
+	
+		<li Class="PatchOperationAdd">
+	<xpath>Defs/ThingDef[defName = "MeleeWeapon_MonoSwordBladelink" or defName = "MeleeWeapon_ZeushammerBladelink" or defName = "MeleeWeapon_PlasmaSwordBladelink"]/statBases</xpath>
+	<value>
+		<RoyalFavorValue>2</RoyalFavorValue>
+	</value>
+	</li>	
+	
+	
+	<li Class="PatchOperationAdd">
+	<xpath>Defs/JoyGiverDef[defName = "Play_MusicalInstrument"]/thingDefs</xpath>
+	<value>
+	<li>DrumOne</li>
+	<li>DrumTwo</li>
+	</value>
+	</li>
+	
+	
+	</operations>
+	</match>
+	
+	
+  </Operation> 
+</Patch>

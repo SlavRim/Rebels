@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<GauranlenTreeModeDef>
+		<defName>Dryad_LightLeathershedder</defName>
+		<label>light leathershedder</label>
+		<description>A dryad caste specialized in shedding a lightweight leathery material. Used as part of their mating ritual, this leather can also be harvested and used by humans.</description>
+		<pawnKindDef>Dryad_LightLeathershedder</pawnKindDef>
+		<drawPosition>(0.9, 0.1665)</drawPosition>
+		<displayedStats>
+			<li>MaxHitPoints</li>
+			<li>MoveSpeed</li>
+		</displayedStats>
+		<hyperlinks>
+			<ThingDef>Dryad_LightLeathershedder</ThingDef>
+		</hyperlinks>
+	</GauranlenTreeModeDef>
+
+	<ThingDef ParentName="DryadBase">
+		<defName>Dryad_LightLeathershedder</defName>
+		<label>light leathershedder dryad</label>
+		<description>A dryad caste specialized in shedding a lightweight leathery material. Used as part of their mating ritual, this leather can also be harvested and used by humans.\n\nIn general, dryads are mammal-like creatures that have a symbiotic relationship with the Gauranlen tree. They reproduce together with their tree, which contains a hidden dryad queen. Dryads can morph into various specialized castes.</description>
+		<descriptionHyperlinks>
+			<ThingDef>Leather_Light</ThingDef>
+		</descriptionHyperlinks>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<MoveSpeed>4.3</MoveSpeed>
+		</statBases>
+		<race>
+			<useMeatFrom>Dryad_Basic</useMeatFrom>
+			<lifeStageAges>
+				<li>
+					<def>AnimalAdult</def>
+					<soundWounded>Pawn_Dryad_Medicinemaker_Wounded</soundWounded>
+					<soundCall>Pawn_Dryad_Medicinemaker_Call</soundCall>
+				</li>
+			</lifeStageAges>
+		</race>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>Leather_Light</thingToSpawn>
+				<spawnCount>24</spawnCount>
+				<spawnIntervalRange>120000</spawnIntervalRange>
+				<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+				<showMessageIfOwned>true</showMessageIfOwned>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<PawnKindDef ParentName="DryadKindBase">
+		<defName>Dryad_LightLeathershedder</defName>
+		<label>light leathershedder dryad</label>
+		<race>Dryad_LightLeathershedder</race>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Things/Animals/Dryad_Leathershedder</texPath>
+					<drawSize>1.15</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Animals/Dessicated_DryadLeathershedder</texPath>
+					<drawSize>1.15</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+
+
+
+
+
+
+	<GauranlenTreeModeDef>
+		<defName>Dryad_HeavyLeathershedder</defName>
+		<label>heavy leathershedder</label>
+		<description>A dryad caste specialized in shedding a strong leathery material. Used as part of their mating ritual, this leather can also be harvested and used by humans.</description>
+		<pawnKindDef>Dryad_HeavyLeathershedder</pawnKindDef>
+		<drawPosition>(0.9, 0.333)</drawPosition>
+		<displayedStats>
+			<li>MaxHitPoints</li>
+			<li>MoveSpeed</li>
+		</displayedStats>
+		<hyperlinks>
+			<ThingDef>Dryad_HeavyLeathershedder</ThingDef>
+		</hyperlinks>
+	</GauranlenTreeModeDef>
+
+	<ThingDef ParentName="DryadBase">
+		<defName>Dryad_HeavyLeathershedder</defName>
+		<label>heavy leathershedder dryad</label>
+		<description>A dryad caste specialized in shedding a strong leathery material. Used as part of their mating ritual, this leather can also be harvested and used by humans.\n\nIn general, dryads are mammal-like creatures that have a symbiotic relationship with the Gauranlen tree. They reproduce together with their tree, which contains a hidden dryad queen. Dryads can morph into various specialized castes.</description>
+		<descriptionHyperlinks>
+			<ThingDef>Leather_Heavy</ThingDef>
+		</descriptionHyperlinks>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<MoveSpeed>2</MoveSpeed>
+		</statBases>
+		<race>
+			<useMeatFrom>Dryad_Basic</useMeatFrom>
+			<lifeStageAges>
+				<li>
+					<def>AnimalAdult</def>
+					<soundWounded>Pawn_Dryad_Medicinemaker_Wounded</soundWounded>
+					<soundCall>Pawn_Dryad_Medicinemaker_Call</soundCall>
+				</li>
+			</lifeStageAges>
+		</race>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>Leather_Heavy</thingToSpawn>
+				<spawnCount>18</spawnCount>
+				<spawnIntervalRange>160000</spawnIntervalRange>
+				<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+				<showMessageIfOwned>true</showMessageIfOwned>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<PawnKindDef ParentName="DryadKindBase">
+		<defName>Dryad_HeavyLeathershedder</defName>
+		<label>heavy leathershedder dryad</label>
+		<race>Dryad_HeavyLeathershedder</race>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Things/Animals/Dryad_HeavyLeathershedder</texPath>
+					<drawSize>1.6</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Animals/Dessicated_DryadLeathershedder</texPath>
+					<drawSize>1.6</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
+
+
+</Defs>

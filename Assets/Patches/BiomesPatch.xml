@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Temperate Biomes -->
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "TemperateForest"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.04</Baradin_bush>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "AridShrubland"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.08</Baradin_bush>
+		</value>
+	</Operation>
+	
+		<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "BorealForest"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.03</Baradin_bush>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "TemperateSwamp"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.03</Baradin_bush>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "ColdBog"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.02</Baradin_bush>
+		</value>
+	</Operation>	
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "Desert"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.08</Baradin_bush>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "Tundra"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.036</Baradin_bush>
+		</value>
+	</Operation>	
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "TropicalRainforest"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.03</Baradin_bush>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "TropicalSwamp"]/wildPlants</xpath>
+		<value>
+			<Baradin_bush>0.03</Baradin_bush>
+		</value>
+	</Operation>	
+
+<!--	
+
+	
+	
+	
+	
+	
+
+	
+		
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/BiomeDef[defName = "ExtremeDesert"]/wildPlants</xpath>
+		<value>
+			<RB_Plant_Hive_Desert>500</RB_Plant_Hive_Desert>
+			<RB_Plant_Hive_Arid>500</RB_Plant_Hive_Arid>
+		</value>
+	</Operation>
+	
+
+
+	
+
+
+-->
+
+	
+	
+</Patch>

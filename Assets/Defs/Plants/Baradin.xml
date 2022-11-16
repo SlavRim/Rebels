@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--    Plant      -->
+	<ThingDef ParentName="PlantBase">
+		<defName>Baradin_bush</defName>
+		<label>baradin bush</label>
+		<description>A dry bush with yellow leaves, white flowers, and strong-smelling bark. The leaves from the bush can be brewed into a tea that relieves pain and slightly reduces consciousness; combined with neutroamine for a strong pain-killer; or dried with the bark to produce a pleasant incense.</description>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Nutrition>0.5</Nutrition>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plant/BaradinBush</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>30</pathCost>
+		<neverMultiSelect>false</neverMultiSelect>
+		<ingestible />
+		<plant>
+			<fertilityMin>0.4</fertilityMin>
+			<growDays>12</growDays>
+
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>BaradinLeaves</harvestedThingDef>
+			<sowTags>
+				<li>Ground</li>
+				<li>Hydroponic</li>
+			</sowTags>
+			<harvestYield>9</harvestYield>
+			<sowMinSkill>7</sowMinSkill>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<immatureGraphicPath>Things/Plant/BaradinBushImmature</immatureGraphicPath>
+			<burnedThingDef>BurnedTree</burnedThingDef>
+			<purpose>Health</purpose>
+			<topWindExposure>0.25</topWindExposure>
+			<wildClusterRadius>3</wildClusterRadius>
+			<wildClusterWeight>6</wildClusterWeight>
+			<visualSizeRange>0.8~1.7</visualSizeRange>
+			<mustBeWildToSow>false</mustBeWildToSow>
+			<wildOrder>3</wildOrder>
+		</plant>
+	</ThingDef>
+
+	<!--	
+	  <IncidentDef>
+    <defName>BaradinSprout</defName>
+    <label>baradin bush sprout</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>IncidentWorker_AmbrosiaSprout</workerClass>
+    <baseChance>1.0</baseChance>
+    <letterLabel>Ambrosia sprout</letterLabel>
+    <letterText>A grove of the mysterious ambrosia bush has sprouted nearby! If you wait for the plants to grow, you'll be able to harvest the delicious, pleasurable, and slightly addictive fruit.</letterText>
+    <letterDef>PositiveEvent</letterDef>
+    <allowedBiomes>
+      <li>TropicalRainforest</li>
+      <li>TropicalSwamp</li>
+      <li>TemperateForest</li>
+      <li>TemperateSwamp</li>
+      <li>BorealForest</li>
+      <li>AridShrubland</li>
+    </allowedBiomes>
+  </IncidentDef>
+  -->
+
+	<!--    Leaves      -->
+	<ThingDef ParentName="RoughPlantBase">
+		<defName>BaradinLeaves</defName>
+		<label>Baradin leaves</label>
+		<description>The dry leaves and bark of a baradin bush. Can be brewed into mild pain-killing teas, or dried over a fire into pleasant incense.</description>
+		<stackLimit>75</stackLimit>
+		<graphicData>
+			<texPath>Things/Plant/Raw/Baradin_leaves</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>1.5</MarketValue>
+			<Mass>0.010</Mass>
+			<Flammability>1.6</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>PlantMatter</li>
+		</thingCategories>
+		<ingestible>
+			<optimalityOffsetFeedingAnimals>-12</optimalityOffsetFeedingAnimals>
+			<preferability>NeverForNutrition</preferability>
+			<foodType>Processed</foodType>
+		</ingestible>
+	</ThingDef>
+
+	<!-- Chemical stuff -->
+	<ChemicalDef>
+		<defName>Baradin</defName>
+		<label>baradin</label>
+		<toleranceHediff>BaradinTolerance</toleranceHediff>
+		<addictionHediff>BaradinAddiction</addictionHediff>
+		<onGeneratedAddictedToleranceChance>0.00</onGeneratedAddictedToleranceChance>
+	</ChemicalDef>
+
+	<HediffDef ParentName="DrugToleranceBase">
+		<defName>BaradinTolerance</defName>
+		<label>baradin tolerance</label>
+		<description>A built-up tolerance to baradin. The more severe this tolerance is, the more tea it takes to get the same effect.</description>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.020</severityPerDay>
+			</li>
+			<li Class="HediffCompProperties_DrugEffectFactor">
+				<chemical>Baradin</chemical>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<NeedDef ParentName="DrugAddictionNeedBase">
+		<defName>Chemical_Baradin</defName>
+		<needClass>Need_Chemical</needClass>
+		<label>Baradin</label>
+		<description>Because of an ambrosia addiction, this person needs to regularly consume ambrosia to avoid withdrawal symptoms.</description>
+		<listPriority>20</listPriority>
+	</NeedDef>
+
+	<HediffDef ParentName="AddictionBase">
+		<defName>BaradinAddiction</defName>
+		<label>ambrosia addiction</label>
+		<description>A chemical addiction to ambrosia. Long-term presence of ambrosia has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.\nWithout regular doses of ambrosia, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
+		<hediffClass>Hediff_Addiction</hediffClass>
+		<causesNeed>Chemical_Baradin</causesNeed>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.1</severityPerDay>
+				<showDaysToRecover>true</showDaysToRecover>
+			</li>
+		</comps>
+		<stages>
+			<li>
+			</li>
+			<li>
+				<!--   <label>withdrawal</label> -->
+			</li>
+		</stages>
+	</HediffDef>
+
+	<!--    Tea      -->
+	<ThingDef ParentName="MakeableDrugBase">
+		<defName>BaradinTea</defName>
+		<label>baradin tea</label>
+		<description>A medicinal tea made from baradin bush. Drinking it provides some mild pain relief, and a small decrease in consciousness.</description>
+		<descriptionHyperlinks>
+			<HediffDef>BaradinTeaHigh</HediffDef>
+			<HediffDef>BaradinTolerance</HediffDef>
+
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>Things/Products/Baradin_tea</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>0.88</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>350</WorkToMake>
+			<MarketValue>5</MarketValue>
+			<Mass>0.05</Mass>
+			<DeteriorationRate>4</DeteriorationRate>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<ingestible>
+			<foodType>Fluid, Processed</foodType>
+
+			<baseIngestTicks>310</baseIngestTicks>
+			<nurseable>true</nurseable>
+			<drugCategory>Medical</drugCategory>
+			<ingestSound>Ingest_Drink</ingestSound>
+			<ingestHoldOffsetStanding>
+				<northDefault>
+					<offset>(0.18,0,0)</offset>
+				</northDefault>
+			</ingestHoldOffsetStanding>
+			<ingestHoldUsesTable>false</ingestHoldUsesTable>
+			<ingestCommandString>Drink {0}</ingestCommandString>
+			<ingestReportString>Drinking {0}.</ingestReportString>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>BaradinTeaHigh</hediffDef>
+					<severity>1</severity>
+					<toleranceChemical>Baradin</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>BaradinTolerance</hediffDef>
+					<severity>0.05</severity>
+					<divideByBodySize>true</divideByBodySize>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<!--      <researchPrerequisite>PsychoidBrewing</researchPrerequisite> -->
+			<recipeUsers>
+				<li>Campfire</li>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+			</recipeUsers>
+			<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+			<workSkill>Cooking</workSkill>
+			<skillRequirements>
+				<Cooking>4</Cooking>
+			</skillRequirements>
+			<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+		</recipeMaker>
+		<costList>
+			<BaradinLeaves>1</BaradinLeaves>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Drug">
+				<chemical>Baradin</chemical>
+				<addictiveness>0</addictiveness>
+				<minToleranceToAddict>0.25</minToleranceToAddict>
+				<existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+				<needLevelOffset>0.9</needLevelOffset>
+				<listOrder>10</listOrder>
+			</li>
+
+		</comps>
+	</ThingDef>
+
+	<!-- Strong drug -->
+	<ThingDef ParentName="MakeableDrugBase">
+		<defName>Baradene</defName>
+		<label>baradene</label>
+		<description>A strong painkiller derived from Baradin leaves. Significantly reduces pain, but renders the user a little dozy.</description>
+		<descriptionHyperlinks>
+			<HediffDef>BaradeneHigh</HediffDef>
+			<HediffDef>BaradinTolerance</HediffDef>
+
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>Things/Items/Baradene</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MarketValue>25</MarketValue>
+			<Mass>0.05</Mass>
+			<DeteriorationRate>4</DeteriorationRate>
+		</statBases>
+		<techLevel>Industrial</techLevel>
+		<ingestible>
+			<foodType>Fluid, Processed</foodType>
+			<ingestCommandString>Take {0}</ingestCommandString>
+			<ingestReportString>Taking {0}.</ingestReportString>
+			<baseIngestTicks>310</baseIngestTicks>
+			<nurseable>true</nurseable>
+			<drugCategory>Medical</drugCategory>
+			<ingestSound>Ingest_Drink</ingestSound>
+
+			<ingestHoldOffsetStanding>
+				<northDefault>
+					<offset>(0.18,0,0)</offset>
+				</northDefault>
+			</ingestHoldOffsetStanding>
+			<ingestHoldUsesTable>false</ingestHoldUsesTable>
+
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>BaradeneHigh</hediffDef>
+					<severity>1</severity>
+					<toleranceChemical>Baradin</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>BaradinTolerance</hediffDef>
+					<severity>0.15</severity>
+					<divideByBodySize>true</divideByBodySize>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<costList>
+			<BaradinLeaves>2</BaradinLeaves>
+			<Neutroamine>1</Neutroamine>
+		</costList>
+
+		<comps>
+			<li Class="CompProperties_Drug">
+				<chemical>Baradin</chemical>
+				<addictiveness>0</addictiveness>
+				<minToleranceToAddict>0.25</minToleranceToAddict>
+				<existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+				<needLevelOffset>0.9</needLevelOffset>
+				<listOrder>10</listOrder>
+			</li>
+
+		</comps>
+	</ThingDef>
+
+
+
+
+
+	<RecipeDef>
+		<defName>Make_BaradeneOne</defName>
+		<label>make baradene</label>
+		<description>Make baradene, a strong painkiller derived from Baradin leaves. Significantly reduces pain, but renders the patient dozy.</description>
+		<jobString>Making baradene.</jobString>
+		<workAmount>550</workAmount>
+
+
+		<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Drug</soundWorking>
+		<researchPrerequisite>DrugProduction</researchPrerequisite>
+
+
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BaradinLeaves</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Neutroamine</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+
+		<products>
+			<Baradene>1</Baradene>
+		</products>
+
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+	</RecipeDef>
+
+
+	<RecipeDef>
+		<defName>Make_BaradeneMany</defName>
+		<label>make baradene x4</label>
+		<description>Make baradene, a strong painkiller derived from Baradin leaves. Significantly reduces pain, but renders the patient dozy.</description>
+		<jobString>Making baradene x4.</jobString>
+		<workAmount>2200</workAmount>
+
+
+		<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Drug</soundWorking>
+		<researchPrerequisite>DrugProduction</researchPrerequisite>
+
+
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BaradinLeaves</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Neutroamine</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		</ingredients>
+
+		<products>
+			<Baradene>4</Baradene>
+		</products>
+
+		<recipeUsers>
+			<li>DrugLab</li>
+		</recipeUsers>
+	</RecipeDef>
+
+
+
+
+
+
+
+
+	<!--    Teahigh      -->
+	<HediffDef>
+		<defName>BaradinTeaHigh</defName>
+		<label>Baradin tea effects.</label>
+		<labelNoun>the effect of Baradin tea.</labelNoun>
+		<description>Active Baradin tea in the bloodstream. Reduces pain.</description>
+		<hediffClass>Hediff_High</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-2.2</severityPerDay>
+				<showHoursToRecover>true</showHoursToRecover>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painOffset>-0.1</painOffset>
+				<painFactor>0.75</painFactor>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.05</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.1</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>BaradeneHigh</defName>
+		<label>Baradene effects.</label>
+		<labelNoun>the effect of Baradene.</labelNoun>
+		<description>Active Baradene tea in the bloodstream. Reduces pain.</description>
+		<hediffClass>Hediff_High</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-2.2</severityPerDay>
+				<showHoursToRecover>true</showHoursToRecover>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painOffset>-0.15</painOffset>
+				<painFactor>0.65</painFactor>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.1</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<!-- Incense -->
+
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>BaradinIncense</defName>
+		<label>baradin incense</label>
+		<description>An aromatic incense, dried over a fire from the leaves and bark of baradin bush. Burning incense improves the mood and slightly reduces the pain of anyone near the burner.</description>
+		<graphicData>
+			<texPath>Things/Items/Incense</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>1.1</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<stackLimit>50</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<statBases>
+			<WorkToMake>120</WorkToMake>
+			<MarketValue>5</MarketValue>
+			<Mass>0.05</Mass>
+			<Beauty>1</Beauty>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+
+		<recipeMaker>
+			<recipeUsers>
+				<li>Campfire</li>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				<li>DrugLab</li>
+			</recipeUsers>
+			<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+			<workSkill>Cooking</workSkill>
+			<skillRequirements>
+				<Cooking>2</Cooking>
+			</skillRequirements>
+		</recipeMaker>
+		<costList>
+			<BaradinLeaves>1</BaradinLeaves>
+		</costList>
+	</ThingDef>
+
+
+
+	<!--
+  <RecipeDef>
+    <defName>Make_BaradinIncense</defName>
+    <label>make baradin incense</label>
+    <description>Make baradin incense from the leaves and bark of baradin bush. Burning incense improves the mood and slightly reduces the pain of anyone near the burner.</description>
+    <jobString>Making baradin incense.</jobString>
+    <workAmount>110</workAmount>
+    <workSpeedStat>CookSpeed</workSpeedStat>
+    <requiredGiverWorkType>Cooking</requiredGiverWorkType>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Cremate</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+	<ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BaradinLeaves</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BaradinLeaves</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <BaradinIncense>1</BaradinIncense>
+    </products>
+    <workSkill>Cooking</workSkill>
+		      <recipeUsers>
+        <li>Campfire</li>
+		     <li>DrugLab</li>
+      </recipeUsers>
+  </RecipeDef> -->
+
+
+	<RecipeDef>
+		<defName>Make_BaradinIncenseBulk</defName>
+		<label>make baradin incense x4</label>
+		<description>Make bulk baradin incense from the leaves and bark of baradin bush. Burning incense improves the mood and slightly reduces the pain of anyone near the burner.</description>
+		<jobString>Making bulk baradin incense.</jobString>
+		<workAmount>340</workAmount>
+		<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+		<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+		<workSkill>Cooking</workSkill>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BaradinLeaves</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BaradinLeaves</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BaradinIncense>4</BaradinIncense>
+		</products>
+		<recipeUsers>
+			<li>Campfire</li>
+			<li>ElectricStove</li>
+			<li>FueledStove</li>
+		</recipeUsers>
+	</RecipeDef>
+
+
+
+	<HediffDef>
+		<defName>IncenseHigh</defName>
+		<label>Inhaled Baradin incense.</label>
+		<labelNoun>Inhaled Baradin incense.</labelNoun>
+		<description>A small amount of Baradin incense smoke which improves mood and slightly reduces pain.</description>
+		<hediffClass>Hediff_High</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1</maxSeverity>
+
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-8.0</severityPerDay>
+				<showHoursToRecover>true</showHoursToRecover>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painFactor>0.95</painFactor>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<ThoughtDef>
+		<defName>IncenseHighThought</defName>
+		<workerClass>ThoughtWorker_Hediff</workerClass>
+		<hediff>IncenseHigh</hediff>
+		<validWhileDespawned>true</validWhileDespawned>
+		<stages>
+			<li>
+				<label>incense relaxation</label>
+				<description>That Baradin incense sooths my aching muscles.</description>
+				<baseMoodEffect>3</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+
+
+
+	<!--  Trader     -->
+	<TraderKindDef>
+		<defName>Caravan_Neolithic_herb_trader</defName>
+		<label>herb trader</label>
+		<stockGenerators>
+
+
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Silver</thingDef>
+				<countRange>300~1000</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Pemmican</thingDef>
+				<countRange>0~200</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedicineHerbal</thingDef>
+				<countRange>5~25</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>PsychiteTea</thingDef>
+				<countRange>0~25</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>PsychoidLeaves</thingDef>
+				<countRange>0~145</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Yayo</thingDef>
+				<countRange>0~20</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>BaradinTea</thingDef>
+				<countRange>10~15</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>BaradinIncense</thingDef>
+				<countRange>20~25</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Baradene</thingDef>
+				<countRange>0~10</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Penoxycyline</thingDef>
+				<countRange>0~10</countRange>
+			</li>
+
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Luciferium</thingDef>
+				<countRange>0~3</countRange>
+			</li>
+
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>SmokeleafJoint</thingDef>
+				<countRange>0~30</countRange>
+			</li>
+
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Dye</thingDef>
+				<countRange>5~10</countRange>
+			</li>
+
+
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Cloth</thingDef>
+				<countRange>0~60</countRange>
+			</li>
+
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Leather_Light</thingDef>
+				<countRange>0~60</countRange>
+			</li>
+
+			<li Class="StockGenerator_BuySingleDef">
+				<thingDef>MedicineHerbal</thingDef>
+			</li>
+			<li Class="StockGenerator_BuySingleDef">
+				<thingDef>SmokeleafLeaves</thingDef>
+			</li>
+
+		</stockGenerators>
+	</TraderKindDef>
+
+
+</Defs>

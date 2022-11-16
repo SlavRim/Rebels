@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <SongDef>
+    <clipPath>AllianceAmbient</clipPath>
+    <minRoyalTitle>Comrade_Zero</minRoyalTitle>
+  </SongDef> 
+  
+      <SongDef>
+    <clipPath>AllianceMusicShort</clipPath>
+    <minRoyalTitle>Comrade_Zero</minRoyalTitle>
+  </SongDef> 
+ 
+  
+      <SongDef>
+    <clipPath>AllianceMusicMediumLength</clipPath>
+    <minRoyalTitle>Comrade_One</minRoyalTitle>
+  </SongDef>
+  
+        <SongDef>
+    <clipPath>AllianceMusic</clipPath>
+    <minRoyalTitle>Comrade_One</minRoyalTitle>
+  </SongDef>
+  
+      <SongDef>
+    <clipPath>AllianceMusicTense</clipPath>
+    <minRoyalTitle>Comrade_One</minRoyalTitle>
+	<tense>true</tense>
+  </SongDef>
+
+</Defs>
