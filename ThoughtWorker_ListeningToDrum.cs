@@ -2,5 +2,5 @@
 
 public class ThoughtWorker_ListeningToDrum : ThoughtWorker_MusicalInstrumentListeningBase
 {
-    protected override ThingDef InstrumentDef => Defs.DrumOne;
+    public override ThingDef InstrumentDef => Defs.DrumOne;
 }

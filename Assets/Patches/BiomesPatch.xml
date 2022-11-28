@@ -17,7 +17,7 @@
 		</value>
 	</Operation>
 	
-		<Operation Class="PatchOperationAdd">
+	<Operation Class="PatchOperationAdd">
 		<xpath>/Defs/BiomeDef[defName = "BorealForest"]/wildPlants</xpath>
 		<value>
 			<Baradin_bush>0.03</Baradin_bush>

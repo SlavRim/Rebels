@@ -6,7 +6,7 @@ public class JobDriver_TrainMelee : JobDriver_WatchBuilding
 {
     private const int PunchSoundInterval = 400;
 
-    protected override void WatchTickAction()
+    public override void WatchTickAction()
     {
         if (pawn.IsHashIntervalTick(PunchSoundInterval + UnityEngine.Random.Range(0, 100) - (pawn.skills.GetSkill(SkillDefOf.Melee).Level) * 10))
         {
@@ -19,4 +19,3 @@ public class JobDriver_TrainMelee : JobDriver_WatchBuilding
         base.WatchTickAction();
     }
 }
-
